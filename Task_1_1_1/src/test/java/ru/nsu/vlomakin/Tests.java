@@ -4,6 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.nsu.vlomakin.Heapsort;
 
+/**
+ * Different tests for heapsort algorithm
+ * 1)Simple test, nothing strange
+ * 2)array with repetitive elements
+ * 3)inverted array
+ */
 public class Tests {
     @Test
     public void test1() {
