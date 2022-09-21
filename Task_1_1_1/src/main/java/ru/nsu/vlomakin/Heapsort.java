@@ -1,11 +1,11 @@
 package ru.nsu.vlomakin;
 
 /**
- * My heapsort algorithm realization
+ * My heapsort algorithm realization.
  */
 public class Heapsort {
     /**
-     * main class with one simple test
+     * main class with one simple test.
      */
     public static void main(String[] args) {
         int[] result = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -26,7 +26,8 @@ public class Heapsort {
     }
 
     /**
-     * This method applies heapsort to the array with n integer numbers
+     * This method applies heapsort to the array with n integer numbers.
+     *
      * @param arr - array we need to sort
      * @param n - number of array elements
      */
