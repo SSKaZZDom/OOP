@@ -33,4 +33,20 @@ public class HeapsortTests {
         Heapsort.heapsort(test, 9);
         Assertions.assertArrayEquals(result, test);
     }
+
+    @Test
+    public void testEmptyArray() {
+        int[] result = {};
+        int[] test = {};
+        Heapsort.heapsort(test, 0);
+        Assertions.assertArrayEquals(result, test);
+    }
+
+    @Test
+    public void testOneElement() {
+        int[] result = {1};
+        int[] test = {1};
+        Heapsort.heapsort(test, 1);
+        Assertions.assertArrayEquals(result, test);
+    }
 }
