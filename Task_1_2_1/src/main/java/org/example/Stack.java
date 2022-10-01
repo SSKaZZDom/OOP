@@ -76,19 +76,19 @@ public class Stack<T> {
         if (size == 0) {
             System.out.println("Stack is empty");
         } else {
-            Stack<T> Out = new Stack<>(a);
+            Stack<T> out = new Stack<>(a);
             if (size < a) {
                 for (int i = size - 1; i >= 0; i--) {
-                    Out.array[i] = pop();
-                    Out.size++;
+                    out.array[i] = pop();
+                    out.size++;
                 }
             } else {
                 for (int i = a - 1; i >= 0; i--) {
-                    Out.array[i] = pop();
-                    Out.size++;
+                    out.array[i] = pop();
+                    out.size++;
                 }
             }
-            return Out;
+            return out;
         }
         return null;
     }

@@ -69,18 +69,4 @@ public class StackTests {
         Assertions.assertEquals(st1.count(), st2.count());
         Assertions.assertEquals(st2.count(), 3);
     }
-
-    /**
-     * Test with empty stacks.
-     */
-    @Test
-    public void testEmptyStacks() {
-        Stack<Integer> st1 = new Stack<>(0);
-        Stack<Integer> st2 = new Stack<>(10);
-        Assertions.assertEquals(st1, st2);
-        Integer num = 0;
-        st1.push(num);
-        num = st1.pop();
-        Assertions.assertEquals(st1, st2);
-    }
 }
