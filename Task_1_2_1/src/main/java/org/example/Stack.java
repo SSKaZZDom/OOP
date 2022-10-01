@@ -15,7 +15,7 @@ public class Stack<T> {
     /**
      * Constructor of stack.
      */
-    public Stack(int capacity){
+    public Stack(int capacity) {
         limit = capacity;
         array = (T[]) new Object[limit];
         size = 0;
@@ -33,15 +33,15 @@ public class Stack<T> {
      * This function add one element to the top of stack.
      */
     public void push(T a) {
-        if (size == limit){
-            if (limit == 0){
+        if (size == limit) {
+            if (limit == 0) {
                 limit = 2;
             }
             limit *= 2;
             realloc(limit);
         }
         size++;
-        array[size-1] = a;
+        array[size - 1] = a;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Stack<T> {
      */
     public void pushStack(Stack<T> stack) {
         int finish = stack.count();
-        for (int i = 0; i < finish; i++){
+        for (int i = 0; i < finish; i++) {
             push(stack.array[i]);
         }
     }
@@ -63,8 +63,7 @@ public class Stack<T> {
             T res = array[size];
             array[size] = null;
             return res;
-        }
-        else {
+        } else {
             System.out.println("Stack is empty");
         }
         return null;
@@ -74,18 +73,16 @@ public class Stack<T> {
      * This function take n elements from the top of stack.
      */
     public Stack<T> popStack(int a) {
-        if (size == 0){
+        if (size == 0) {
             System.out.println("Stack is empty");
-        }
-        else {
+        } else {
             Stack<T> Out = new Stack<>(a);
-            if (size < a){
+            if (size < a) {
                 for (int i = size - 1; i >= 0; i--) {
                     Out.array[i] = pop();
                     Out.size++;
                 }
-            }
-            else {
+            } else {
                 for (int i = a - 1; i >= 0; i--) {
                     Out.array[i] = pop();
                     Out.size++;
@@ -99,7 +96,7 @@ public class Stack<T> {
     /**
      * This function return number of stack elements.
      */
-    public int count(){
+    public int count() {
         return size;
     }
 
@@ -109,17 +106,17 @@ public class Stack<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o){
+        if (this == o) {
             return true;
         }
-        if (!(o instanceof Stack)){
+        if (!(o instanceof Stack)) {
             return false;
         }
         Stack<?> eqStack = (Stack<?>) o;
         boolean var = size == eqStack.size;
         if (var) {
-            for (int i = 0; i < size; i++){
-                if (array[i] != eqStack.array[i]){
+            for (int i = 0; i < size; i++) {
+                if (array[i] != eqStack.array[i]) {
                     var = false;
                     break;
                 }
