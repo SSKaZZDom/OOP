@@ -31,10 +31,12 @@ public class StackTests {
         num3 = stack1.pop();
         stack1.push(num1);
         stack1.push(num2);
+        stack1.push(num3);
         Stack<Integer> helpStack2 = new Stack<>(10);
         helpStack2.push(11);
         helpStack2.push(22);
         helpStack2.push(33);
+        helpStack2.push(11);
         Assertions.assertEquals(helpStack2, stack1);
         Stack<Integer> helpStack3 = new Stack<>(10);
         helpStack3.push(22);
@@ -61,11 +63,6 @@ public class StackTests {
         Stack<String> st2 = new Stack<>(0);
         Assertions.assertEquals(st2.count(), 0);
         st2.pushStack(st1.popStack(3));
-        String str = ";;;";
-        st2.push(str);
-        st2.push(str);
-        str = st2.pop();
-        str = st2.pop();
         Assertions.assertEquals(st1, st2);
         Assertions.assertEquals(st1.count(), st2.count());
         Assertions.assertEquals(st2.count(), 3);
@@ -78,10 +75,6 @@ public class StackTests {
     public void testEmptyStacks() {
         Stack<Integer> st1 = new Stack<>(0);
         Stack<Integer> st2 = new Stack<>(10);
-        Assertions.assertEquals(st1, st2);
-        Integer num = 0;
-        st1.push(num);
-        num = st1.pop();
         Assertions.assertEquals(st1, st2);
         Assertions.assertEquals(st1.count(), 0);
     }
