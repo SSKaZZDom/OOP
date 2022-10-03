@@ -63,8 +63,6 @@ public class Stack<T> {
             T res = array[size];
             array[size] = null;
             return res;
-        } else {
-            System.out.println("Stack is empty");
         }
         return null;
     }
@@ -73,24 +71,19 @@ public class Stack<T> {
      * This function take n elements from the top of stack.
      */
     public Stack<T> popStack(int a) {
-        if (size == 0) {
-            System.out.println("Stack is empty");
-        } else {
-            Stack<T> out = new Stack<>(a);
-            if (size < a) {
-                for (int i = size - 1; i >= 0; i--) {
-                    out.array[i] = pop();
-                    out.size++;
-                }
-            } else {
-                for (int i = a - 1; i >= 0; i--) {
-                    out.array[i] = pop();
-                    out.size++;
-                }
+        Stack<T> out = new Stack<>(a);
+        if (size < a) {
+            for (int i = size - 1; i >= 0; i--) {
+                out.array[i] = pop();
+                out.size++;
             }
-            return out;
+        } else {
+            for (int i = a - 1; i >= 0; i--) {
+                out.array[i] = pop();
+                out.size++;
+            }
         }
-        return null;
+        return out;
     }
 
     /**
@@ -113,17 +106,17 @@ public class Stack<T> {
             return false;
         }
         Stack<?> eqStack = (Stack<?>) o;
-        boolean var;
-        var = size == eqStack.size;
-        if (var) {
+        boolean bool;
+        bool = size == eqStack.size;
+        if (bool) {
             for (int i = 0; i < size; i++) {
                 if (array[i] != eqStack.array[i]) {
-                    var = false;
+                    bool = false;
                     break;
                 }
             }
         }
-        return var;
+        return bool;
     }
 
     /**

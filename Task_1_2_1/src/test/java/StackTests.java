@@ -83,14 +83,17 @@ public class StackTests {
      * Test for increasing coverage.
      */
     @Test
-    public void testFloat(){
+    public void testFloat() {
         Stack<Float> st1 = new Stack<>(10);
         st1.push(1.0f);
+        Assertions.assertEquals(st1, st1);
+        Float fl = 2.0f;
+        Assertions.assertTrue(!st1.equals(fl));
         Stack<Float> st2 = new Stack<>(10);
-        st2.pushStack(st1);
-        Assertions.assertEquals(st1, st2);
+        st2.push(2.0f);
+        Assertions.assertTrue(!st1.equals(st2));
         st1.pushStack(st2.popStack(1));
-        Assertions.assertEquals(st1.count(),2);
-        Assertions.assertEquals(st2.count(),0);
+        Assertions.assertEquals(st1.count(), 2);
+        Assertions.assertEquals(st2.count(), 0);
     }
 }
