@@ -97,5 +97,7 @@ public class StackTests {
         Assertions.assertEquals(st2.count(), 0);
         st1.pop();
         st1.pop();
+        st1.pop();
+        int hash = st1.hashCode();
     }
 }
