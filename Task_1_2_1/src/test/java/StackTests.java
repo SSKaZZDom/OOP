@@ -37,14 +37,14 @@ public class StackTests {
         helpStack2.push(22);
         helpStack2.push(33);
         helpStack2.push(11);
-        Assertions.assertTrue(helpStack2.equals(stack1));
+        Assertions.assertEquals(helpStack2, stack1);
         Stack<Integer> helpStack3 = new Stack<>(10);
         helpStack3.push(22);
         helpStack3.push(22);
         helpStack3.push(22);
         helpStack3.push(22);
         helpStack3.push(22);
-        Assertions.assertTrue(helpStack1.equals(helpStack3));
+        Assertions.assertEquals(helpStack1, helpStack3);
         Assertions.assertEquals(helpStack1.count(), 5);
     }
 
@@ -63,7 +63,7 @@ public class StackTests {
         Stack<String> st2 = new Stack<>(0);
         Assertions.assertEquals(st2.count(), 0);
         st2.pushStack(st1.popStack(3));
-        Assertions.assertTrue(st1.equals(st2));
+        Assertions.assertEquals(st1, st2);
         Assertions.assertEquals(st1.count(), st2.count());
         Assertions.assertEquals(st2.count(), 3);
     }
@@ -75,7 +75,22 @@ public class StackTests {
     public void testEmptyStacks() {
         Stack<Integer> st1 = new Stack<>(0);
         Stack<Integer> st2 = new Stack<>(10);
-        Assertions.assertTrue(st1.equals(st2));
+        Assertions.assertEquals(st1, st2);
         Assertions.assertEquals(st1.count(), 0);
+    }
+
+    /**
+     * Test for increasing coverage.
+     */
+    @Test
+    public void testFloat(){
+        Stack<Float> st1 = new Stack<>(10);
+        st1.push(1.0f);
+        Stack<Float> st2 = new Stack<>(10);
+        st2.pushStack(st1);
+        Assertions.assertEquals(st1, st2);
+        st1.pushStack(st2.popStack(1));
+        Assertions.assertEquals(st1.count(),2);
+        Assertions.assertEquals(st2.count(),0);
     }
 }

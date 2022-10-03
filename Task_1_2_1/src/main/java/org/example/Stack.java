@@ -113,7 +113,8 @@ public class Stack<T> {
             return false;
         }
         Stack<?> eqStack = (Stack<?>) o;
-        boolean var = size == eqStack.size;
+        boolean var;
+        var = size == eqStack.size;
         if (var) {
             for (int i = 0; i < size; i++) {
                 if (array[i] != eqStack.array[i]) {
