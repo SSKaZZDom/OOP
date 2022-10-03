@@ -95,5 +95,7 @@ public class StackTests {
         st1.pushStack(st2.popStack(1));
         Assertions.assertEquals(st1.count(), 2);
         Assertions.assertEquals(st2.count(), 0);
+        st1.pop();
+        st1.pop();
     }
 }
