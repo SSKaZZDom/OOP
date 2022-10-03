@@ -15,8 +15,8 @@ public class Stack<T> {
     /**
      * Constructor of stack.
      */
-    public Stack(int capacity) {
-        limit = capacity;
+    public Stack() {
+        limit = 2;
         array = (T[]) new Object[limit];
         size = 0;
     }
@@ -34,9 +34,6 @@ public class Stack<T> {
      */
     public void push(T a) {
         if (size == limit) {
-            if (limit == 0) {
-                limit = 2;
-            }
             limit *= 2;
             realloc(limit);
         }
@@ -68,20 +65,21 @@ public class Stack<T> {
     }
 
     /**
-     * This function take n elements from the top of stack.
+     * This function take N elements from the top of stack.
      */
-    public Stack<T> popStack(int a) {
-        Stack<T> out = new Stack<>(a);
-        if (size < a) {
-            for (int i = size - 1; i >= 0; i--) {
-                out.array[i] = pop();
-                out.size++;
-            }
+    public Stack<T> popStack(int N) {
+        Stack<T> out = new Stack<>();
+        int start;
+        int finish;
+        if (size < N) {
+            finish = 0;
         } else {
-            for (int i = a - 1; i >= 0; i--) {
-                out.array[i] = pop();
-                out.size++;
-            }
+            finish = size - N;
+        }
+        start = size;
+        for (int i = start - 1; i >= finish; i--){
+            out.array[i] = pop();
+            out.size++;
         }
         return out;
     }

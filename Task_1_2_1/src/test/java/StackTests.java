@@ -11,7 +11,7 @@ public class StackTests {
      */
     @Test
     public void testPushPop() {
-        Stack<Integer> stack1 = new Stack<>(10);
+        Stack<Integer> stack1 = new Stack<>();
         stack1.push(11);
         stack1.push(11);
         stack1.push(33);
@@ -21,7 +21,7 @@ public class StackTests {
         stack1.push(22);
         stack1.push(22);
         stack1.push(22);
-        Stack<Integer> helpStack1 = new Stack<>(10);
+        Stack<Integer> helpStack1 = new Stack<>();
         helpStack1.pushStack(stack1.popStack(5));
         Integer num1;
         Integer num2;
@@ -32,13 +32,13 @@ public class StackTests {
         stack1.push(num1);
         stack1.push(num2);
         stack1.push(num3);
-        Stack<Integer> helpStack2 = new Stack<>(10);
+        Stack<Integer> helpStack2 = new Stack<>();
         helpStack2.push(11);
         helpStack2.push(22);
         helpStack2.push(33);
         helpStack2.push(11);
         Assertions.assertEquals(helpStack2, stack1);
-        Stack<Integer> helpStack3 = new Stack<>(10);
+        Stack<Integer> helpStack3 = new Stack<>();
         helpStack3.push(22);
         helpStack3.push(22);
         helpStack3.push(22);
@@ -54,13 +54,13 @@ public class StackTests {
      */
     @Test
     public void testCountAndOverflow() {
-        Stack<String> st1 = new Stack<>(0);
+        Stack<String> st1 = new Stack<>();
         st1.push("one");
         st1.push("two");
         st1.push("three");
         st1.pushStack(st1);
         Assertions.assertEquals(st1.count(), 6);
-        Stack<String> st2 = new Stack<>(0);
+        Stack<String> st2 = new Stack<>();
         Assertions.assertEquals(st2.count(), 0);
         st2.pushStack(st1.popStack(3));
         Assertions.assertEquals(st1, st2);
@@ -73,8 +73,8 @@ public class StackTests {
      */
     @Test
     public void testEmptyStacks() {
-        Stack<Integer> st1 = new Stack<>(0);
-        Stack<Integer> st2 = new Stack<>(10);
+        Stack<Integer> st1 = new Stack<>();
+        Stack<Integer> st2 = new Stack<>();
         Assertions.assertEquals(st1, st2);
         Assertions.assertEquals(st1.count(), 0);
     }
@@ -84,12 +84,12 @@ public class StackTests {
      */
     @Test
     public void testFloat() {
-        Stack<Float> st1 = new Stack<>(10);
+        Stack<Float> st1 = new Stack<>();
         st1.push(1.0f);
         Assertions.assertEquals(st1, st1);
         Float fl = 2.0f;
         Assertions.assertTrue(!st1.equals(fl));
-        Stack<Float> st2 = new Stack<>(10);
+        Stack<Float> st2 = new Stack<>();
         st2.push(2.0f);
         Assertions.assertTrue(!st1.equals(st2));
         st1.pushStack(st2.popStack(1));
