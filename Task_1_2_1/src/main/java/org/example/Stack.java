@@ -65,19 +65,20 @@ public class Stack<T> {
     }
 
     /**
-     * This function take N elements from the top of stack.
+     * This function take n elements from the top of stack.
      */
-    public Stack<T> popStack(int N) {
+    public Stack<T> popStack(int n) {
         Stack<T> out = new Stack<>();
         int start;
-        int finish;
-        if (size < N) {
-            finish = 0;
+        if (size < n) {
+            start = size;
+            out.limit = 2 * n;
         } else {
-            finish = size - N;
+            start = n;
+            out.limit = 2 * size;
         }
-        start = size;
-        for (int i = start - 1; i >= finish; i--){
+        out.realloc(out.limit);
+        for (int i = start - 1; i >= 0; i--) {
             out.array[i] = pop();
             out.size++;
         }
