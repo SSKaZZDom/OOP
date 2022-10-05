@@ -7,6 +7,80 @@ import org.junit.jupiter.api.Test;
  */
 public class StackTests {
     /**
+     * Unit test for push function.
+     * push adds one element to the top of stack
+     */
+    @Test
+    public void testPush() {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+    }
+
+    /**
+     * Unit test for pushStack.
+     * pushStack adds one stack to the top of another stack
+     */
+    @Test
+    public void testPushStack() {
+        Stack<Integer> stack1 = new Stack<>();
+        stack1.push(1);
+        stack1.push(2);
+        stack1.push(3);
+        Stack<Integer> stack2 = new Stack<>();
+        stack2.pushStack(stack1);
+        Assertions.assertEquals(stack1, stack2);
+    }
+
+    /**
+     * Unit test for pop function.
+     * pop returns top element of stack
+     */
+    @Test
+    public void testPop() {
+        Stack<String> stack = new Stack<>();
+        stack.push("Unit");
+        stack.push("Tests");
+        String str;
+        str = stack.pop();
+        Assertions.assertEquals(str, "Tests");
+        str = stack.pop();
+        Assertions.assertEquals(str, "Unit");
+    }
+
+    /**
+     * Unit test for popStack.
+     * popStack return one stack with n last elements of another stack
+     */
+    @Test
+    public void testPopStack() {
+        Stack<Integer> stack1 = new Stack<>();
+        stack1.push(1);
+        stack1.push(20);
+        stack1.push(1);
+        stack1.push(20);
+        Stack<Integer> stack2 = new Stack<>();
+        stack2.pushStack(stack1.popStack(2));
+        Assertions.assertEquals(stack1, stack2);
+    }
+
+    /**
+     * Unit test for count function.
+     * count returns the number of stack elements
+     */
+    @Test
+    public void testCount() {
+        Stack<Long> stack = new Stack<>();
+        stack.push(1L);
+        stack.push(2L);
+        stack.push(3L);
+        Assertions.assertEquals(stack.count(), 3);
+        stack.pop();
+        Assertions.assertEquals(stack.count(), 2);
+    }
+
+    /**
      * This test check the work of push & pop functions.
      */
     @Test
@@ -84,20 +158,20 @@ public class StackTests {
      */
     @Test
     public void testFloat() {
-        Stack<Float> st1 = new Stack<>();
-        st1.push(1.0f);
-        Assertions.assertEquals(st1, st1);
-        Float fl = 2.0f;
-        Assertions.assertTrue(!st1.equals(fl));
-        Stack<Float> st2 = new Stack<>();
-        st2.push(2.0f);
-        Assertions.assertTrue(!st1.equals(st2));
-        st1.pushStack(st2.popStack(1));
-        Assertions.assertEquals(st1.count(), 2);
-        Assertions.assertEquals(st2.count(), 0);
-        st1.pop();
-        st1.pop();
-        st1.pop();
-        int hash = st1.hashCode();
-    }
+            Stack<Float> st1 = new Stack<>();
+            st1.push(1.0f);
+            Assertions.assertEquals(st1, st1);
+            Float fl = 2.0f;
+            Assertions.assertTrue(!st1.equals(fl));
+            Stack<Float> st2 = new Stack<>();
+            st2.push(2.0f);
+            Assertions.assertTrue(!st1.equals(st2));
+            st1.pushStack(st2.popStack(1));
+            Assertions.assertEquals(st1.count(), 2);
+            Assertions.assertEquals(st2.count(), 0);
+            st1.pop();
+            st1.pop();
+            st1.pop();
+            int hash = st1.hashCode();
+        }
 }
