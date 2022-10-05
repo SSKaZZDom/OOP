@@ -22,23 +22,15 @@ public class Stack<T> {
     }
 
     /**
-     * Auxiliary function.
-     * It increases capacity of stack
-     */
-    private void realloc(int doubleLimit) {
-        array = Arrays.copyOf(array, doubleLimit);
-    }
-
-    /**
      * This function add one element to the top of stack.
      */
-    public void push(T a) {
+    public void push(T element) {
         if (size == limit) {
             limit *= 2;
             realloc(limit);
         }
         size++;
-        array[size - 1] = a;
+        array[size - 1] = element;
     }
 
     /**
@@ -69,14 +61,9 @@ public class Stack<T> {
      */
     public Stack<T> popStack(int n) {
         Stack<T> out = new Stack<>();
-        int start;
-        if (size < n) {
-            start = size;
-            out.limit = 2 * n;
-        } else {
-            start = n;
-            out.limit = 2 * size;
-        }
+        int start = 0;
+        start = size < n ? size : n;
+        out.limit = size < n ? 2 * n : 2 * size;
         out.realloc(out.limit);
         for (int i = start - 1; i >= 0; i--) {
             out.array[i] = pop();
@@ -105,17 +92,17 @@ public class Stack<T> {
             return false;
         }
         Stack<?> eqStack = (Stack<?>) o;
-        boolean bool;
-        bool = size == eqStack.size;
-        if (bool) {
-            for (int i = 0; i < size; i++) {
-                if (array[i] != eqStack.array[i]) {
-                    bool = false;
-                    break;
-                }
+        boolean isSizeEquals;
+        isSizeEquals = size == eqStack.size;
+        if (!isSizeEquals) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (array[i] != eqStack.array[i]) {
+                return false;
             }
         }
-        return bool;
+        return true;
     }
 
     /**
@@ -127,4 +114,13 @@ public class Stack<T> {
         res = 31 * res + Arrays.hashCode(array);
         return res;
     }
+
+    /**
+     * Auxiliary function.
+     * It increases capacity of stack
+     */
+    private void realloc(int doubleLimit) {
+        array = Arrays.copyOf(array, doubleLimit);
+    }
+
 }
