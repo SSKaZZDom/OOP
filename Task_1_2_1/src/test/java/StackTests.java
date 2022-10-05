@@ -158,20 +158,20 @@ public class StackTests {
      */
     @Test
     public void testFloat() {
-            Stack<Float> st1 = new Stack<>();
-            st1.push(1.0f);
-            Assertions.assertEquals(st1, st1);
-            Float fl = 2.0f;
-            Assertions.assertTrue(!st1.equals(fl));
-            Stack<Float> st2 = new Stack<>();
-            st2.push(2.0f);
-            Assertions.assertTrue(!st1.equals(st2));
-            st1.pushStack(st2.popStack(1));
-            Assertions.assertEquals(st1.count(), 2);
-            Assertions.assertEquals(st2.count(), 0);
-            st1.pop();
-            st1.pop();
-            st1.pop();
-            int hash = st1.hashCode();
-        }
+        Stack<Float> st1 = new Stack<>();
+        st1.push(1.0f);
+        Assertions.assertEquals(st1, st1);
+        Float fl = 2.0f;
+        Assertions.assertTrue(!st1.equals(fl));
+        Stack<Float> st2 = new Stack<>();
+        st2.push(2.0f);
+        Assertions.assertTrue(!st1.equals(st2));
+        st1.pushStack(st2.popStack(1));
+        Assertions.assertEquals(st1.count(), 2);
+        Assertions.assertEquals(st2.count(), 0);
+        st1.pop();
+        st1.pop();
+        st1.pop();
+        int hash = st1.hashCode();
+    }
 }
