@@ -90,7 +90,7 @@ public class SubstringTests {
             expect.add(5000L);
             expect.add(2576000L);
             List<Long> result = new ArrayList<>(allEntries(stream, "haha"));
-            Assertions.assertEquals(expect,result);
+            Assertions.assertEquals(expect, result);
         } catch (Exception c) {
             fail();
         }
