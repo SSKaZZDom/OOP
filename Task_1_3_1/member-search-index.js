@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"count.substring","c":"SearchSubstring","l":"allEntries(InputStream, String)","url":"allEntries(java.io.InputStream,java.lang.String)"},{"p":"count.substring","c":"SearchSubstring","l":"SearchSubstring()","url":"%3Cinit%3E()"}]
