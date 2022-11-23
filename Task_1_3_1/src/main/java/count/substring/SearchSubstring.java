@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchSubstring {
-    public static List<Long> allEntries(InputStream stream, String subStr) throws IOException{
+    public static List<Long> allEntries(InputStream stream, String subStr) throws IOException {
         List<Long> res = new ArrayList<>();
         int cnt = 0;
         long idx = 0;
         int subLen = subStr.length();
-        int prefix[] = prefixFunc(subStr);
+        int[] prefix = prefixFunc(subStr);
         Reader reader = new BufferedReader(new InputStreamReader(stream));
         int sym = reader.read();
         while(sym != -1) {
-            if((char) sym == subStr.charAt(cnt)){
+            if((char) sym == subStr.charAt(cnt)) {
                 sym = reader.read();
                 idx++;
                 cnt++;
@@ -27,7 +27,7 @@ public class SearchSubstring {
             else {
                 cnt = prefix[cnt - 1];
             }
-            if(cnt == subLen){
+            if(cnt == subLen) {
                 res.add(idx - subLen);
                 cnt = prefix[cnt - 1];
             }
@@ -35,16 +35,16 @@ public class SearchSubstring {
         return res;
     }
 
-    private static int[] prefixFunc(String subStr){
+    private static int[] prefixFunc(String subStr) {
         int len = subStr.length();
-        int result[] = new int[len];
+        int[] result = new int[len];
         int cnt;
-        for(int i = 1; i < len; i++){
+        for(int i = 1; i < len; i++) {
             cnt = result[i - 1];
-            while(cnt > 0 && subStr.charAt(i) != subStr.charAt(cnt)){
+            while(cnt > 0 && subStr.charAt(i) != subStr.charAt(cnt)) {
                 cnt = result[cnt - 1];
             }
-            if(subStr.charAt(i) == subStr.charAt(cnt)){
+            if(subStr.charAt(i) == subStr.charAt(cnt)) {
                 cnt++;
             }
             result[i] = cnt;
