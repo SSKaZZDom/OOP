@@ -5,6 +5,11 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of substring search in a string.
+ * In this code I use Knuth-Morris-Pratt algorithm.
+ * KMP algorithm works in O(n) in worse case.
+ */
 public class SearchSubstring {
     public static List<Long> allEntries(InputStream stream, String subStr) throws IOException {
         List<Long> res = new ArrayList<>();

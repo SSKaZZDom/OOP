@@ -10,6 +10,15 @@ import org.junit.jupiter.api.Test;
 
 import static count.substring.SearchSubstring.allEntries;
 
+/**
+ * Some tests for the correctness of my realisation of KMP algorithm.
+ * Number of test |    Substring   |   String    |
+ * ---------------|----------------|-------------|
+ *        1       |       pie      |   pppppie   |
+ *        2       |       pie      | pie piepie  |
+ *        3       |      pppie     |   pppppie   |
+ *        4       |      haha      | *Huge Test* |
+ */
 public class SubstringTests {
     @Test
     public void testUnitSearch() {
