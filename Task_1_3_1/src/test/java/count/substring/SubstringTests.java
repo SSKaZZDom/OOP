@@ -1,9 +1,7 @@
 package count.substring;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static count.substring.SearchSubstring.allEntries;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SubstringTests {
     @Test
