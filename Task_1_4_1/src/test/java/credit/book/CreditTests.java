@@ -36,7 +36,7 @@ public class CreditTests {
         myBook.terms.put(2, term);
         Assertions.assertFalse(myBook.redDimploma());
         Assertions.assertFalse(myBook.incScholarship());
-        Assertions.assertEquals("3,6", myBook.avgMark());
+        Assertions.assertEquals("3.6", myBook.avgMark());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class CreditTests {
         myBook.terms.put(2, term);
         Assertions.assertFalse(myBook.redDimploma());
         Assertions.assertTrue(myBook.incScholarship());
-        Assertions.assertEquals("4,4", myBook.avgMark());
+        Assertions.assertEquals("4.4", myBook.avgMark());
     }
 
     @Test
@@ -183,7 +183,7 @@ public class CreditTests {
         myBook.diplomaGrades.put("Machine learning", Grade.EXCELLENT);
 
         Assertions.assertTrue(myBook.redDimploma());
-        Assertions.assertEquals("4,8", myBook.avgMark());
+        Assertions.assertEquals("4.8", myBook.avgMark());
     }
 
     @Test
@@ -298,6 +298,6 @@ public class CreditTests {
         myBook.diplomaGrades.put("Machine learning", Grade.EXCELLENT);
 
         Assertions.assertFalse(myBook.redDimploma());
-        Assertions.assertEquals("4,8", myBook.avgMark());
+        Assertions.assertEquals("4.8", myBook.avgMark());
     }
 }
