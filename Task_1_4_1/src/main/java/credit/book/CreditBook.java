@@ -25,6 +25,7 @@ public class CreditBook {
 
     /**
      * Constructor of CreditBook class.
+     *
      * @param cntTerms - number of finishing terms
      */
     public CreditBook(int cntTerms) {
@@ -108,7 +109,8 @@ public class CreditBook {
     }
 
     private double marksPercent() {
-        double cntAll = 0, cntGreat = 0;
+        double cntAll = 0;
+        double cntGreat = 0;
         Collection<Grade> grades = new ArrayList<>(diplomaGrades.values());
         for (Grade grade : grades) {
             if (grade.equals(Grade.EXCELLENT)) {
