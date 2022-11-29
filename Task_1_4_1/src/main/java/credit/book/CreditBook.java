@@ -32,9 +32,9 @@ public class CreditBook {
     public boolean incScholarship() {
         List<Grade> grades = new ArrayList<>(terms.get(cntTerms).examGrades());
         boolean flag = true;
-        for (Grade grade : grades){
-                switch (grade){
-                    case BAD,SATISFACTORY,GOOD,NONCREDIT -> flag = false;
+        for (Grade grade : grades) {
+                switch (grade) {
+                    case BAD, SATISFACTORY, GOOD, NONCREDIT -> flag = false;
                 }
             }
         return flag;
@@ -45,7 +45,7 @@ public class CreditBook {
         int cnt = 0;
         int mark;
         List<Grade> grades = new ArrayList<>();
-        for (int i = 1; i <= cntTerms; i++){
+        for (int i = 1; i <= cntTerms; i++) {
             grades.addAll(terms.get(i).examGrades());
         }
         for (Grade grade : grades) {
@@ -63,11 +63,11 @@ public class CreditBook {
     private boolean hasSatisfactory() {
         List<Grade> grades = new ArrayList<>();
         boolean flag = false;
-        for (int i = 1; i <= 8; i++){
+        for (int i = 1; i <= 8; i++) {
             grades.addAll(terms.get(i).examGrades());
             for (Grade grade : grades) {
-                switch (grade){
-                    case BAD, SATISFACTORY, NONCREDIT -> flag = true;
+                if (grade == Grade.BAD || grade == Grade.SATISFACTORY || grade == Grade.NONCREDIT) {
+                    return true;
                 }
             }
         }
@@ -86,7 +86,7 @@ public class CreditBook {
         if (diplomaGrades.containsKey("Qualification work")) {
             cntAll--;
         }
-        return cntGreat/cntAll;
+        return cntGreat / cntAll;
     }
 
     private int convert(Grade grade) {
