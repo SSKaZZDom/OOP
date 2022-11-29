@@ -1,19 +1,42 @@
 package credit.book;
 
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+/**
+ * Class CreditBook.
+ * This implementation contains:
+ *  In constructor:
+ *  - Map of Terms
+ *  - Map of diploma grades
+ *  Functions:
+ *  - avgMark function
+ *  - incScholarship function
+ *  - redDiploma function
+ */
 public class CreditBook {
     Map<Integer, Term> terms;
     Map<String, Grade> diplomaGrades;
     int cntTerms;
 
+    /**
+     * Constructor of CreditBook class.
+     * @param cntTerms - number of finishing terms
+     */
     public CreditBook(int cntTerms) {
         terms = new HashMap<>();
         diplomaGrades = new HashMap<>();
         this.cntTerms = cntTerms;
     }
 
+    /**
+     * redDiploma function.
+     * return true if you completed all requirements for obtaining a red diploma
+     */
     public boolean redDimploma() {
         if (cntTerms < 8) {
             return false;
@@ -29,17 +52,27 @@ public class CreditBook {
         return res;
     }
 
+    /**
+     * incScholarship function.
+     * return true if you have only excellent marks in the last Term
+     */
     public boolean incScholarship() {
         List<Grade> grades = new ArrayList<>(terms.get(cntTerms).examGrades());
         boolean flag = true;
         for (Grade grade : grades) {
-                switch (grade) {
-                    case BAD, SATISFACTORY, GOOD, NONCREDIT -> flag = false;
-                }
-            }
+            if (grade == Grade.BAD || grade == Grade.SATISFACTORY) {
+                flag = false;
+            } else if (grade == Grade.GOOD || grade == Grade.NONCREDIT) {
+                flag = false;
+            } // Не смог всунуть это в один if, потому что ограничение длины строки от rewiewdog
+        }
         return flag;
     }
 
+    /**
+     * avgMark function.
+     * return average mark in format "#.#"
+     */
     public String avgMark() {
         double sum = 0;
         int cnt = 0;
