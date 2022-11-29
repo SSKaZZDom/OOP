@@ -76,6 +76,15 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CreditBook</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Class CreditBook.
+ This implementation contains:
+  In constructor:
+  - Map of Terms
+  - Map of diploma grades
+  Functions:
+  - avgMark function
+  - incScholarship function
+  - redDiploma function</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -88,7 +97,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">CreditBook</a><wbr>(int&nbsp;cntTerms)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor of CreditBook class.</div>
+</div>
 </div>
 </section>
 </li>
@@ -105,13 +116,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#avgMark()" class="member-name-link">avgMark</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">avgMark function.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#incScholarship()" class="member-name-link">incScholarship</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">incScholarship function.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#redDimploma()" class="member-name-link">redDimploma</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">redDiploma function.</div>
+</div>
 </div>
 </div>
 </div>
@@ -133,6 +150,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>CreditBook</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CreditBook</span><wbr><span class="parameters">(int&nbsp;cntTerms)</span></div>
+<div class="block">Constructor of CreditBook class.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>cntTerms</code> - - number of finishing terms</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -147,18 +169,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="redDimploma()">
 <h3>redDimploma</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">redDimploma</span>()</div>
+<div class="block">redDiploma function.
+ return true if you completed all requirements for obtaining a red diploma</div>
 </section>
 </li>
 <li>
 <section class="detail" id="incScholarship()">
 <h3>incScholarship</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">incScholarship</span>()</div>
+<div class="block">incScholarship function.
+ return true if you have only excellent marks in the last Term</div>
 </section>
 </li>
 <li>
 <section class="detail" id="avgMark()">
 <h3>avgMark</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">avgMark</span>()</div>
+<div class="block">avgMark function.
+ return average mark in format "#.#"</div>
 </section>
 </li>
 </ul>
