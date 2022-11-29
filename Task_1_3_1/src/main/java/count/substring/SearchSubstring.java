@@ -27,22 +27,25 @@ public class SearchSubstring {
         long idx = 0;
         int subLen = subStr.length();
         int[] prefix = prefixFunc(subStr);
-        Reader reader = new BufferedReader(new InputStreamReader(stream));
-        int sym = reader.read();
-        while (sym != -1) {
-            if ((char) sym == subStr.charAt(cnt)) {
-                sym = reader.read();
-                idx++;
-                cnt++;
-            } else if (cnt == 0) {
-                sym = reader.read();
-                idx++;
-            } else {
-                cnt = prefix[cnt - 1];
-            }
-            if (cnt == subLen) {
-                res.add(idx - subLen);
-                cnt = prefix[cnt - 1];
+        try (Reader streamReader = new InputStreamReader(stream)) {
+            try (Reader reader = new BufferedReader(streamReader)) {
+                int sym = reader.read();
+                while (sym != -1) {
+                    if ((char) sym == subStr.charAt(cnt)) {
+                        sym = reader.read();
+                        idx++;
+                        cnt++;
+                    } else if (cnt == 0) {
+                        sym = reader.read();
+                        idx++;
+                    } else {
+                        cnt = prefix[cnt - 1];
+                    }
+                    if (cnt == subLen) {
+                        res.add(idx - subLen);
+                        cnt = prefix[cnt - 1];
+                    }
+                }
             }
         }
         return res;
