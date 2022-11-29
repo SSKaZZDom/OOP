@@ -1,14 +1,15 @@
 package count.substring;
 
+import static count.substring.SearchSubstring.allEntries;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static count.substring.SearchSubstring.allEntries;
+
 
 /**
  * Some tests for the correctness of my realisation of KMP algorithm.
@@ -81,6 +82,6 @@ public class SubstringTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-            Assertions.assertEquals(expect, result);
+        Assertions.assertEquals(expect, result);
     }
 }

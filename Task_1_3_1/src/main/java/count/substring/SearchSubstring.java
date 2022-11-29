@@ -1,6 +1,10 @@
 package count.substring;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +15,12 @@ import java.util.List;
  * KMP algorithm works in O(n) in worse case.
  */
 public class SearchSubstring {
+    /**
+     * Function in which KMP algorithm implemented.
+     *
+     * @param stream - InputStream, this is necessary for BufferedReader
+     * @param subStr - Substring we are looking for
+     */
     public static List<Long> allEntries(InputStream stream, String subStr) throws IOException {
         List<Long> res = new ArrayList<>();
         int cnt = 0;
