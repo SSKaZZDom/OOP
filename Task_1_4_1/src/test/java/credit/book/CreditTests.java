@@ -1,11 +1,18 @@
 package credit.book;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Tests for the "Credit book" class.
+ * ----------------------------------------------------------------------------------------------------
+ * 1 test - my credit book
+ * 2 test - my credit book, but with the increase scholarship
+ * 3 test - credit book of person, who got a red diploma
+ * 4 test - credit book of person, who didn't get a red diploma, because he has one "satisfactory" mark
+ */
 public class CreditTests {
     @Test
     public void testMyCreditBook() {
