@@ -56,12 +56,8 @@ public class CreditBook {
             }
         }
         sum /= cnt;
-        String result = String.format("%.1f", sum);
-        return result;
-        /* First version, but this is not working with CI :(
-        -------------------------------------------------------
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
-        return decimalFormat.format(sum);*/
+        return decimalFormat.format(sum);
     }
 
     private boolean hasSatisfactory() {
