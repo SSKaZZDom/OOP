@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SubstringTests {
     @Test
-    public void testUnitSearch() throws IOException{
+    public void testUnitSearch() throws IOException {
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
         expect.add(4L);
@@ -34,7 +34,7 @@ public class SubstringTests {
     }
 
     @Test
-    public void testSetOfIndexes() throws IOException{
+    public void testSetOfIndexes() throws IOException {
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
         expect.add(0L);
@@ -47,7 +47,7 @@ public class SubstringTests {
     }
 
     @Test
-    public void testCorruptMyAlg() throws IOException{
+    public void testCorruptMyAlg() throws IOException {
         String sub = "pppie";
         List<Long> expect = new ArrayList<>();
         expect.add(2L);
@@ -58,7 +58,7 @@ public class SubstringTests {
     }
 
     @Test
-    public void testHugeFile() throws IOException{
+    public void testHugeFile() throws IOException {
         List<Long> expect = new ArrayList<>();
         expect.add(2500L);
         expect.add(5000L);
@@ -71,7 +71,7 @@ public class SubstringTests {
     }
 
     @Test
-    public void testWarAndPeace() throws IOException{
+    public void testWarAndPeace() throws IOException {
         List<Long> expect = new ArrayList<>();
         expect.add(370790L);
         expect.add(412230L);
@@ -137,7 +137,8 @@ public class SubstringTests {
         expect.add(2627549L);
         expect.add(2635902L);
         String sub = "Княжна Марья";
-        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("war_and_peace.txt")) {
+        String n = "war_and_peace.txt"; // need only for reviewdog
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream(n)) {
             List<Long> result = new ArrayList<>(allEntries(stream, sub));
             Assertions.assertEquals(expect, result);
         }
