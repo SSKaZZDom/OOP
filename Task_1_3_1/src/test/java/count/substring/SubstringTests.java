@@ -23,71 +23,51 @@ import org.junit.jupiter.api.Test;
  */
 public class SubstringTests {
     @Test
-    public void testUnitSearch() {
+    public void testUnitSearch() throws IOException{
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
         expect.add(4L);
-        List<Long> result = new ArrayList<>();
         InputStream stream = getClass().getClassLoader().getResourceAsStream("input1.txt");
-        try {
-            result.addAll(allEntries(stream, sub));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        List<Long> result = new ArrayList<>(allEntries(stream, sub));
         Assertions.assertEquals(result, expect);
     }
 
     @Test
-    public void testSetOfIndexes() {
+    public void testSetOfIndexes() throws IOException{
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
         expect.add(0L);
         expect.add(4L);
         expect.add(7L);
         InputStream stream = getClass().getClassLoader().getResourceAsStream("input2.txt");
-        List<Long> result = null;
-        try {
-            result = new ArrayList<>(allEntries(stream, sub));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        List<Long> result = new ArrayList<>(allEntries(stream, sub));
         Assertions.assertEquals(expect, result);
     }
 
     @Test
-    public void testCorruptMyAlg() {
+    public void testCorruptMyAlg() throws IOException{
         String sub = "pppie";
         List<Long> expect = new ArrayList<>();
         expect.add(2L);
         InputStream stream = getClass().getClassLoader().getResourceAsStream("input1.txt");
-        List<Long> result = null;
-        try {
-            result = new ArrayList<>(allEntries(stream, sub));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        List<Long> result = new ArrayList<>(allEntries(stream, sub));
         Assertions.assertEquals(expect, result);
     }
 
     @Test
-    public void testHugeFile() {
+    public void testHugeFile() throws IOException{
         List<Long> expect = new ArrayList<>();
         expect.add(2500L);
         expect.add(5000L);
         expect.add(2576000L);
         String sub = "haha";
         InputStream stream = getClass().getClassLoader().getResourceAsStream("giant.txt");
-        List<Long> result = null;
-        try {
-            result = new ArrayList<>(allEntries(stream, sub));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        List<Long> result = new ArrayList<>(allEntries(stream, sub));
         Assertions.assertEquals(expect, result);
     }
 
     @Test
-    public void testWarAndPeace() {
+    public void testWarAndPeace() throws IOException{
         List<Long> expect = new ArrayList<>();
         expect.add(370790L);
         expect.add(412230L);
@@ -154,12 +134,7 @@ public class SubstringTests {
         expect.add(2635902L);
         String sub = "Княжна Марья";
         InputStream stream = getClass().getClassLoader().getResourceAsStream("war_and_peace.txt");
-        List<Long> result = null;
-        try {
-            result = new ArrayList<>(allEntries(stream, sub));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        List<Long> result = new ArrayList<>(allEntries(stream, sub));
         Assertions.assertEquals(expect, result);
     }
 }
