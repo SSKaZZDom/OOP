@@ -2,10 +2,13 @@ package count.substring;
 
 import static count.substring.SearchSubstring.allEntries;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +25,7 @@ import org.junit.jupiter.api.Test;
  *        5       |  Княжна Марья  |war and peace|
  */
 public class SubstringTests {
-    @Test
+/*    @Test
     public void testUnitSearch() throws IOException {
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
@@ -69,7 +72,21 @@ public class SubstringTests {
             Assertions.assertEquals(expect, result);
         }
     }
-
+*/
+    @Test
+    public void testEasyRussian() throws IOException {
+        List<Long> expect = new ArrayList<>();
+        expect.add(4L);
+        expect.add(10L);
+        File file = new File ("src\\test\\resources\\russianSub.txt");
+        Scanner scan = new Scanner(file);
+        String sub = scan.nextLine();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("russian.txt")) {
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            Assertions.assertEquals(expect, result);
+        }
+    }
+/*
     @Test
     public void testWarAndPeace() throws IOException {
         List<Long> expect = new ArrayList<>();
@@ -142,5 +159,5 @@ public class SubstringTests {
             List<Long> result = new ArrayList<>(allEntries(stream, sub));
             Assertions.assertEquals(expect, result);
         }
-    }
+    }*/
 }
