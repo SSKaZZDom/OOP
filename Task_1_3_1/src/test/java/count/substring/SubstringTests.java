@@ -2,9 +2,7 @@ package count.substring;
 
 import static count.substring.SearchSubstring.allEntries;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,11 +76,21 @@ public class SubstringTests {
         List<Long> expect = new ArrayList<>();
         expect.add(4L);
         expect.add(10L);
-        File file = new File ("src\\test\\resources\\russianSub.txt");
-        Scanner scan = new Scanner(file);
-        String sub = scan.nextLine();
+        String sub = "";
+        int sym = 0;
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("russianSub.txt")) {
+            try (Reader streamReader = new InputStreamReader(stream)) {
+                try (Reader reader = new BufferedReader(streamReader)) {
+                    sym = reader.read();
+                    while (sym != -1) {
+                        sub += (char) sym;
+                        sym = reader.read();
+                    }
+                }
+            }
+        }
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("russian.txt")) {
-            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            List<Long> result = new ArrayList<>(allEntries(stream, sub.toString()));
             Assertions.assertEquals(expect, result);
         }
     }
