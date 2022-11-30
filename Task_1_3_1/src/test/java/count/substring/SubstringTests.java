@@ -27,9 +27,10 @@ public class SubstringTests {
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
         expect.add(4L);
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("input1.txt");
-        List<Long> result = new ArrayList<>(allEntries(stream, sub));
-        Assertions.assertEquals(result, expect);
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("input1.txt")) {
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            Assertions.assertEquals(result, expect);
+        }
     }
 
     @Test
@@ -39,9 +40,10 @@ public class SubstringTests {
         expect.add(0L);
         expect.add(4L);
         expect.add(7L);
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("input2.txt");
-        List<Long> result = new ArrayList<>(allEntries(stream, sub));
-        Assertions.assertEquals(expect, result);
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("input2.txt")) {
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            Assertions.assertEquals(expect, result);
+        }
     }
 
     @Test
@@ -49,9 +51,10 @@ public class SubstringTests {
         String sub = "pppie";
         List<Long> expect = new ArrayList<>();
         expect.add(2L);
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("input1.txt");
-        List<Long> result = new ArrayList<>(allEntries(stream, sub));
-        Assertions.assertEquals(expect, result);
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("input1.txt")) {
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            Assertions.assertEquals(expect, result);
+        }
     }
 
     @Test
@@ -61,9 +64,10 @@ public class SubstringTests {
         expect.add(5000L);
         expect.add(2576000L);
         String sub = "haha";
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("giant.txt");
-        List<Long> result = new ArrayList<>(allEntries(stream, sub));
-        Assertions.assertEquals(expect, result);
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("giant.txt")) {
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            Assertions.assertEquals(expect, result);
+        }
     }
 
     @Test
@@ -133,8 +137,9 @@ public class SubstringTests {
         expect.add(2627549L);
         expect.add(2635902L);
         String sub = "Княжна Марья";
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("war_and_peace.txt");
-        List<Long> result = new ArrayList<>(allEntries(stream, sub));
-        Assertions.assertEquals(expect, result);
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("war_and_peace.txt")) {
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
+            Assertions.assertEquals(expect, result);
+        }
     }
 }
