@@ -2,29 +2,31 @@ package count.substring;
 
 import static count.substring.SearchSubstring.allEntries;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 
-/**
- * Some tests for the correctness of my realisation of KMP algorithm.
- * Number of test |    Substring   |   String    |
- * ---------------|----------------|-------------|
- *        1       |       pie      |   pppppie   |
- *        2       |       pie      | pie piepie  |
- *        3       |      pppie     |   pppppie   |
- *        4       |      haha      | *Huge Test* |
- *        5       |  Княжна Марья  |war and peace|
- */
+    /**
+     * Some tests for the correctness of my realisation of KMP algorithm.
+     * Number of test |    Substring   |   String    |
+     * ---------------|----------------|-------------|
+     *        1       |       pie      |   pppppie   |
+     *        2       |       pie      | pie piepie  |
+     *        3       |      pppie     |   pppppie   |
+     *        4       |      haha      | *Huge Test* |
+     *        5       |  Княжна Марья  |war and peace|
+     */
 public class SubstringTests {
-/*    @Test
+    @Test
     public void testUnitSearch() throws IOException {
         String sub = "pie";
         List<Long> expect = new ArrayList<>();
@@ -71,7 +73,6 @@ public class SubstringTests {
             Assertions.assertEquals(expect, result);
         }
     }
-*/
     @Test
     public void testEasyRussian() throws IOException {
         List<Long> expect = new ArrayList<>();
@@ -79,7 +80,8 @@ public class SubstringTests {
         expect.add(10L);
         String sub = "";
         int sym = 0;
-        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("russianSub.txt")) {
+        String n = "russianSub.txt"; //need only for reviewdog
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream(n)) {
             try (Reader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
                 try (Reader reader = new BufferedReader(streamReader)) {
                     sym = reader.read();
@@ -178,10 +180,7 @@ public class SubstringTests {
         String n = "war_and_peace.txt"; // need only for reviewdog
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream(n)) {
             List<Long> result = new ArrayList<>(allEntries(stream, sub));
-            //Assertions.assertEquals(expect, result);
-            for (int i = 0; i < result.size(); i++){
-                System.out.println(result.get(i));
-            }
+            Assertions.assertEquals(expect, result);
         }
     }
 }
