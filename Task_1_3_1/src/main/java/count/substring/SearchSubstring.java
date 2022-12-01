@@ -28,7 +28,7 @@ public class SearchSubstring {
         long idx = 0;
         int subLen = subStr.length();
         int[] prefix = prefixFunc(subStr);
-        try (Reader streamReader = new InputStreamReader(stream)) {
+        try (Reader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
             try (Reader reader = new BufferedReader(streamReader)) {
                 int sym = reader.read();
                 while (sym != -1) {

@@ -3,6 +3,7 @@ package count.substring;
 import static count.substring.SearchSubstring.allEntries;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +80,7 @@ public class SubstringTests {
         String sub = "";
         int sym = 0;
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("russianSub.txt")) {
-            try (Reader streamReader = new InputStreamReader(stream)) {
+            try (Reader streamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
                 try (Reader reader = new BufferedReader(streamReader)) {
                     sym = reader.read();
                     while (sym != -1) {
@@ -90,7 +91,7 @@ public class SubstringTests {
             }
         }
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("russian.txt")) {
-            List<Long> result = new ArrayList<>(allEntries(stream, sub.toString()));
+            List<Long> result = new ArrayList<>(allEntries(stream, sub));
             Assertions.assertEquals(expect, result);
         }
     }
