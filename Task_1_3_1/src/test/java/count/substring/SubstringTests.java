@@ -15,16 +15,16 @@ import org.junit.jupiter.api.Test;
 
 
 
-    /**
-     * Some tests for the correctness of my realisation of KMP algorithm.
-     * Number of test |    Substring   |   String    |
-     * ---------------|----------------|-------------|
-     *        1       |       pie      |   pppppie   |
-     *        2       |       pie      | pie piepie  |
-     *        3       |      pppie     |   pppppie   |
-     *        4       |      haha      | *Huge Test* |
-     *        5       |  Княжна Марья  |war and peace|
-     */
+/**
+ * Some tests for the correctness of my realisation of KMP algorithm.
+ * Number of test |    Substring   |   String    |
+ * ---------------|----------------|-------------|
+ *        1       |       pie      |   pppppie   |
+ *        2       |       pie      | pie piepie  |
+ *        3       |      pppie     |   pppppie   |
+ *        4       |      haha      | *Huge Test* |
+ *        5       |  Княжна Марья  |war and peace|
+ */
 public class SubstringTests {
     @Test
     public void testUnitSearch() throws IOException {
@@ -73,6 +73,7 @@ public class SubstringTests {
             Assertions.assertEquals(expect, result);
         }
     }
+
     @Test
     public void testEasyRussian() throws IOException {
         List<Long> expect = new ArrayList<>();
