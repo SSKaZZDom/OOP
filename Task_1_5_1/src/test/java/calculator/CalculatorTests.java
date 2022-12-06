@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test for Calculator.
- * 7 unit tests & 1 test from the example in tasks.
+ * 9 unit tests & 1 test from the example in tasks.
  */
 public class CalculatorTests {
     @Test

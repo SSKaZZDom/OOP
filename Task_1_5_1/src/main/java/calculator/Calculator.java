@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Coming soon.
+ * Class Calculator.
+ * Constructor contains string with numbers and prefix functions
+ * Single function "calculator" works with this string and return the result
  */
 public class Calculator {
     String str;
@@ -14,6 +16,18 @@ public class Calculator {
         this.str = str;
     }
 
+    /**
+     * Main function of calculator.
+     * Steps:
+     * 0) Check for the validity of input string
+     * 1) Parse String, for example from "- 1 1" it does list of elements -
+     *    List = [Element(true, 4.0), Element(false, 1.0), Element(false, 1.0)]
+     * 2) Find all actions, which we can do, for example in "sin + - 1 1 sin 0"
+     *    on the first iteration we do "- 1 1" and "sin 0"
+     *    on the second iteration we do "+ 1 0"
+     *    and on the final step we do "sin 1"
+     * 3) Return the result as double
+     */
     public double calculator() {
         List<Element> list = new ArrayList<>(parse(str));
         List<Integer> rem = new ArrayList<>();
