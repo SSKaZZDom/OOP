@@ -76,7 +76,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Calculator</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Coming soon.</div>
+<div class="block">Class Calculator.
+ Constructor contains string with numbers and prefix functions
+ Single function "calculator" works with this string and return the result</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,7 +108,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#calculator()" class="member-name-link">calculator</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Main function of calculator.</div>
+</div>
 </div>
 </div>
 </div>
@@ -142,6 +146,16 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="calculator()">
 <h3>calculator</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">calculator</span>()</div>
+<div class="block">Main function of calculator.
+ Steps:
+ 0) Check for the validity of input string
+ 1) Parse String, for example from "- 1 1" it does list of elements -
+    List = [Element(true, 4.0), Element(false, 1.0), Element(false, 1.0)]
+ 2) Find all actions, which we can do, for example in "sin + - 1 1 sin 0"
+    on the first iteration we do "- 1 1" and "sin 0"
+    on the second iteration we do "+ 1 0"
+    and on the final step we do "sin 1"
+ 3) Return the result as double</div>
 </section>
 </li>
 </ul>
