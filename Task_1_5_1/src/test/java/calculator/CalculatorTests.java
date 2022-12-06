@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorTests {
     @Test
-    public void testUnitMinus(){
+    public void testUnitMinus() {
         String str = "- 1 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -13,7 +13,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitPlus(){
+    public void testUnitPlus() {
         String str = "+ 1 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -21,7 +21,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitDivision(){
+    public void testUnitDivision() {
         String str = "/ 1 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -29,7 +29,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitMultiplication(){
+    public void testUnitMultiplication() {
         String str = "* 2 2";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -37,7 +37,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitLog(){
+    public void testUnitLog() {
         String str = "log 2 8";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -45,7 +45,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitPow(){
+    public void testUnitPow() {
         String str = "pow 2 3";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -53,7 +53,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitSin(){
+    public void testUnitSin() {
         String str = "sin 0";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -61,7 +61,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitCos(){
+    public void testUnitCos() {
         String str = "cos 0";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -69,7 +69,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitSqrt(){
+    public void testUnitSqrt() {
         String str = "sqrt 9";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
