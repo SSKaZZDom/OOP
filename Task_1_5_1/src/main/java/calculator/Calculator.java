@@ -1,18 +1,26 @@
 package calculator;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.lang.Math;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Coming soon.
+ */
 public class Calculator {
     String str;
-    public Calculator (String str) {
+
+    public Calculator(String str) {
         this.str = str;
     }
+
     public double calculator() {
         List<Element> list = new ArrayList<>(parse(str));
         List<Integer> rem = new ArrayList<>();
         double elem;
+        double func;
+        double num1;
+        double num2;
         if (check(list)) {
             while (list.size() > 1) {
                 for (int i = 0; i < list.size() - 2; i++) {
@@ -26,7 +34,10 @@ public class Calculator {
                             }
                         } else {
                             if (!list.get(i + 1).flag() && !list.get(i + 2).flag()) {
-                                elem = binaryFunction(list.get(i).num(), list.get(i + 1).num(), list.get(i + 2).num());
+                                func = list.get(i).num();
+                                num1 = list.get(i + 1).num();
+                                num2 = list.get(i + 2).num();
+                                elem = binaryFunction(func, num1, num2);
                                 list.set(i + 1, new Element(false, elem));
                                 rem.add(i);
                                 rem.add(i + 2);
@@ -36,7 +47,9 @@ public class Calculator {
                     }
                 }
                 if (list.get(list.size() - 2).flag() && !list.get(list.size() - 1).flag()) {
-                    elem = unaryFunction(list.get(list.size() - 2).num(), list.get(list.size() - 1).num());
+                    func = list.get(list.size() - 2).num();
+                    num1 = list.get(list.size() - 1).num();
+                    elem = unaryFunction(func, num1);
                     list.set(list.size() - 1, new Element(false, elem));
                     rem.add(list.size() - 2);
                 }
@@ -51,7 +64,7 @@ public class Calculator {
         }
     }
 
-    private List<Element> parse (String str) {
+    private List<Element> parse(String str) {
         List<Element> result = new ArrayList<>();
         List<String> funcs = new ArrayList<>();
         funcs.add("sin");
@@ -84,7 +97,7 @@ public class Calculator {
                 sub = "";
             }
         }
-        if(sub != "") {
+        if (sub != "") {
             index = funcs.indexOf(sub);
             if (index != -1) {
                 result.add(new Element(true, index));
@@ -100,16 +113,16 @@ public class Calculator {
         return result;
     }
 
-    private double unaryFunction (double func, double num) {
-        return switch ((int)func) {
+    private double unaryFunction(double func, double num) {
+        return switch ((int) func) {
             case 0 -> Math.sin(num);
             case 1 -> Math.cos(num);
             default -> Math.sqrt(num);
         };
     }
 
-    private double binaryFunction (double func, double num1, double num2) {
-        return switch ((int)func) {
+    private double binaryFunction(double func, double num1, double num2) {
+        return switch ((int) func) {
             case 3 -> num1 + num2;
             case 4 -> num1 - num2;
             case 5 -> num1 / num2;
@@ -119,7 +132,7 @@ public class Calculator {
         };
     }
 
-    private boolean check (List<Element> list) {
+    private boolean check(List<Element> list) {
         int cntBin = 0;
         int cntNum = 0;
         for (Element element : list) {
