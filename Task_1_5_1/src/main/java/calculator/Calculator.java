@@ -74,7 +74,7 @@ public class Calculator {
             }
             return list.get(0).num();
         } else {
-            return 2134213432;
+            return 2147483647;
         }
     }
 
@@ -155,6 +155,9 @@ public class Calculator {
             } else if (element.num() >= 3) {
                 cntBin++;
             }
+        }
+        if (list.get(list.size() - 1).flag() && !list.get(0).flag()) {
+            return false;
         }
         return cntBin == cntNum - 1;
     }
