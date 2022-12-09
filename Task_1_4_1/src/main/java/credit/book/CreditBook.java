@@ -57,15 +57,10 @@ public class CreditBook {
      */
     public boolean incScholarship() {
         List<Grade> grades = new ArrayList<>(terms.get(cntTerms).examGrades());
-        boolean flag = true;
-        for (Grade grade : grades) {
-            if (grade == Grade.BAD || grade == Grade.SATISFACTORY) {
-                flag = false;
-            } else if (grade == Grade.GOOD || grade == Grade.NONCREDIT) {
-                flag = false;
-            } // Не смог всунуть это в один if, потому что ограничение длины строки от rewiewdog
-        }
-        return flag;
+        return grades.stream().noneMatch(i -> (i.equals(Grade.BAD)
+                || i.equals(Grade.GOOD)
+                || i.equals(Grade.SATISFACTORY)
+                || i.equals(Grade.NONCREDIT)));
     }
 
     /**
@@ -94,16 +89,14 @@ public class CreditBook {
 
     private boolean hasSatisfactory() {
         List<Grade> grades = new ArrayList<>();
-        boolean flag = false;
         for (int i = 1; i <= 8; i++) {
             grades.addAll(terms.get(i).examGrades());
-            for (Grade grade : grades) {
-                if (grade == Grade.BAD || grade == Grade.SATISFACTORY || grade == Grade.NONCREDIT) {
-                    return true;
-                }
+            if (grades.stream().anyMatch(j -> (j.equals(Grade.NONCREDIT)
+            || j.equals(Grade.SATISFACTORY) || j.equals(Grade.BAD)))) {
+                return true;
             }
         }
-        return flag;
+        return false;
     }
 
     private double marksPercent() {
