@@ -181,9 +181,9 @@ public class SubstringTests {
         String n = "war_and_peace.txt"; // need only for reviewdog
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream(n)) {
             List<Long> result = new ArrayList<>(allEntries(stream, sub));
-            for (int i = 0; i < result.size(); i++) {
+            /*for (int i = 0; i < result.size(); i++) {
                 System.out.println(result.get(i));
-            }
+            }*/
             Assertions.assertEquals(expect, result);
         }
     }

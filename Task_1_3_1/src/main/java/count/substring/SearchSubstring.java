@@ -44,6 +44,7 @@ public class SearchSubstring {
                     }
                     if (cnt == subLen) {
                         res.add(idx - subLen);
+                        System.out.println(idx - subLen);
                         cnt = prefix[cnt - 1];
                     }
                 }
