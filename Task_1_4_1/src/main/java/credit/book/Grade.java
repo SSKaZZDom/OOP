@@ -16,4 +16,14 @@ public enum Grade {
     Grade(String grade) {
         this.grade = grade;
     }
+
+    static int convert(Grade grade) {
+        return switch (grade) {
+            case EXCELLENT -> 5;
+            case GOOD -> 4;
+            case SATISFACTORY -> 3;
+            case BAD -> 2;
+            default -> 0;
+        };
+    }
 }

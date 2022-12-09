@@ -19,8 +19,8 @@ import java.util.Map;
  *  - redDiploma function
  */
 public class CreditBook {
-    Map<Integer, Term> terms;
-    Map<String, Grade> diplomaGrades;
+    Map<Integer, Term> terms = new HashMap<>();
+    Map<String, Grade> diplomaGrades = new HashMap<>();
     int cntTerms;
 
     /**
@@ -29,8 +29,6 @@ public class CreditBook {
      * @param cntTerms - number of finishing terms
      */
     public CreditBook(int cntTerms) {
-        terms = new HashMap<>();
-        diplomaGrades = new HashMap<>();
         this.cntTerms = cntTerms;
     }
 
@@ -83,7 +81,7 @@ public class CreditBook {
             grades.addAll(terms.get(i).examGrades());
         }
         for (Grade grade : grades) {
-            mark = convert(grade);
+            mark = Grade.convert(grade);
             if (mark != 0) {
                 sum += mark;
                 cnt++;
@@ -122,15 +120,5 @@ public class CreditBook {
             cntAll--;
         }
         return cntGreat / cntAll;
-    }
-
-    private int convert(Grade grade) {
-        return switch (grade) {
-            case EXCELLENT -> 5;
-            case GOOD -> 4;
-            case SATISFACTORY -> 3;
-            case BAD -> 2;
-            default -> 0;
-        };
     }
 }
