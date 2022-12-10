@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CalculatorTests {
     @Test
-    public void testUnitMinus() {
+    public void testUnitMinus() throws IncorrectInputException {
         String str = "- 1 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -17,7 +17,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitPlus() {
+    public void testUnitPlus() throws IncorrectInputException {
         String str = "+ 1 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -25,7 +25,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitDivision() {
+    public void testUnitDivision() throws IncorrectInputException {
         String str = "/ 1 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -33,7 +33,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitMultiplication() {
+    public void testUnitMultiplication() throws IncorrectInputException {
         String str = "* 2 2";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -41,7 +41,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitLog() {
+    public void testUnitLog() throws IncorrectInputException {
         String str = "log 2 8";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -49,7 +49,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitPow() {
+    public void testUnitPow() throws IncorrectInputException {
         String str = "pow 2 3";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -57,7 +57,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitSin() {
+    public void testUnitSin() throws IncorrectInputException {
         String str = "sin 0";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -65,7 +65,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitCos() {
+    public void testUnitCos() throws IncorrectInputException {
         String str = "cos 0";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -73,7 +73,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testUnitSqrt() {
+    public void testUnitSqrt() throws IncorrectInputException {
         String str = "sqrt 9";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
@@ -81,7 +81,7 @@ public class CalculatorTests {
     }
 
     @Test
-    public void testFromTask() {
+    public void testFromTask() throws IncorrectInputException {
         String str = "sin + - 1 2 1";
         Calculator calc = new Calculator(str);
         double res = calc.calculator();

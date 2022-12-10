@@ -28,7 +28,7 @@ public class Calculator {
      *    and on the final step we do "sin 1"
      * 3) Return the result as double
      */
-    public double calculator() {
+    public double calculator() throws IncorrectInputException {
         List<Element> list = new ArrayList<>(parse(str));
         List<Integer> rem = new ArrayList<>();
         double elem;
@@ -74,7 +74,7 @@ public class Calculator {
             }
             return list.get(0).num();
         } else {
-            return 2147483647;
+            throw new IncorrectInputException("Your input string is incorrect");
         }
     }
 
