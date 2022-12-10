@@ -92,7 +92,7 @@ public class CreditBook {
         for (int i = 1; i <= 8; i++) {
             grades.addAll(terms.get(i).examGrades());
             if (grades.stream().anyMatch(j -> (j.equals(Grade.NONCREDIT)
-            || j.equals(Grade.SATISFACTORY) || j.equals(Grade.BAD)))) {
+                || j.equals(Grade.SATISFACTORY) || j.equals(Grade.BAD)))) {
                 return true;
             }
         }
