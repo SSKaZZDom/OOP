@@ -87,4 +87,15 @@ public class CalculatorTests {
         double res = calc.calculator();
         Assertions.assertEquals(0.0, res);
     }
+
+    @Test
+    public void testUnitException() {
+        String str = "+ 1 1 1";
+        Calculator calc = new Calculator(str);
+        try {
+            calc.calculator();
+        } catch (IncorrectInputException e) {
+            Assertions.assertNotEquals("", e.getMessage());
+        }
+    }
 }
