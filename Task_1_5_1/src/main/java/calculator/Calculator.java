@@ -35,37 +35,41 @@ public class Calculator {
         double func;
         double num1;
         double num2;
-        if (check(list)) {
+        if (capitalCheck(list)) {
             while (list.size() > 1) {
-                for (int i = 0; i < list.size() - 2; i++) {
-                    if (list.get(i).flag()) {
-                        if (list.get(i).num() < 3) {
-                            if (!list.get(i + 1).flag()) {
-                                elem = unaryFunction(list.get(i).num(), list.get(i + 1).num());
-                                list.set(i + 1, new Element(false, elem));
-                                rem.add(i);
-                                i++;
-                            }
-                        } else {
-                            if (!list.get(i + 1).flag() && !list.get(i + 2).flag()) {
-                                func = list.get(i).num();
-                                num1 = list.get(i + 1).num();
-                                num2 = list.get(i + 2).num();
-                                elem = binaryFunction(func, num1, num2);
-                                list.set(i + 1, new Element(false, elem));
-                                rem.add(i);
-                                rem.add(i + 2);
-                                i += 2;
+                if (iterationCheck(list)) {
+                    for (int i = 0; i < list.size() - 2; i++) {
+                        if (list.get(i).flag()) {
+                            if (list.get(i).num() < 3) {
+                                if (!list.get(i + 1).flag()) {
+                                    elem = unaryFunction(list.get(i).num(), list.get(i + 1).num());
+                                    list.set(i + 1, new Element(false, elem));
+                                    rem.add(i);
+                                    i++;
+                                }
+                            } else {
+                                if (!list.get(i + 1).flag() && !list.get(i + 2).flag()) {
+                                    func = list.get(i).num();
+                                    num1 = list.get(i + 1).num();
+                                    num2 = list.get(i + 2).num();
+                                    elem = binaryFunction(func, num1, num2);
+                                    list.set(i + 1, new Element(false, elem));
+                                    rem.add(i);
+                                    rem.add(i + 2);
+                                    i += 2;
+                                }
                             }
                         }
                     }
-                }
-                if (list.get(list.size() - 2).flag() && !list.get(list.size() - 1).flag()) {
-                    func = list.get(list.size() - 2).num();
-                    num1 = list.get(list.size() - 1).num();
-                    elem = unaryFunction(func, num1);
-                    list.set(list.size() - 1, new Element(false, elem));
-                    rem.add(list.size() - 2);
+                    if (list.get(list.size() - 2).flag() && !list.get(list.size() - 1).flag()) {
+                        func = list.get(list.size() - 2).num();
+                        num1 = list.get(list.size() - 1).num();
+                        elem = unaryFunction(func, num1);
+                        list.set(list.size() - 1, new Element(false, elem));
+                        rem.add(list.size() - 2);
+                    }
+                } else {
+                    throw new IncorrectInputException("Your input string is incorrect");
                 }
                 for (int i = rem.size() - 1; i >= 0; i--) {
                     list.remove((int) rem.get(i));
@@ -146,7 +150,7 @@ public class Calculator {
         };
     }
 
-    private boolean check(List<Element> list) {
+    private boolean capitalCheck(List<Element> list) {
         int cntBin = 0;
         int cntNum = 0;
         for (Element element : list) {
@@ -156,9 +160,10 @@ public class Calculator {
                 cntBin++;
             }
         }
-        if (list.get(list.size() - 1).flag() && !list.get(0).flag()) {
-            return false;
-        }
         return cntBin == cntNum - 1;
+    }
+
+    private boolean iterationCheck(List<Element> list) {
+        return !list.get(list.size() - 1).flag() && list.get(0).flag();
     }
 }
