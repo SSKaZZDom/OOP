@@ -5,7 +5,8 @@ package calculator;
  */
 public class ElementNum extends Element {
     double num;
-    ElementNum (double num) {
+
+    ElementNum(double num) {
         this.num = num;
     }
 
