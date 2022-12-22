@@ -3,7 +3,7 @@ package calculator;
 /**
  * Function Element.
  */
-public class ElementFunc extends Element{
+public class ElementFunc extends Element {
     enum Func {
         LOG,
         SIN,
@@ -16,10 +16,13 @@ public class ElementFunc extends Element{
         POW,
         DEFAULT
     }
+
     Func func;
+
     ElementFunc(Func func) {
         this.func = func;
     }
+
     @Override
     Func func() {
         return func;
