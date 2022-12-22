@@ -3,6 +3,7 @@ package calculator;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.List;
+import calculator.ElementFunc.Func;
 
 /**
  * Class Calculator.
@@ -21,7 +22,7 @@ public class Calculator {
      * Steps:
      * 0) Check for the validity of input string
      * 1) Parse String, for example from "- 1 1" it does list of elements -
-     *    List = [Element(true, 4.0), Element(false, 1.0), Element(false, 1.0)]
+     *    List = [ElementFunc(MINUS), ElementNum(1.0), ElementNum(1.0)]
      * 2) Find all actions, which we can do, for example in "sin + - 1 1 sin 0"
      *    on the first iteration we do "- 1 1" and "sin 0"
      *    on the second iteration we do "+ 1 0"
@@ -32,40 +33,50 @@ public class Calculator {
         List<Element> list = new ArrayList<>(parse(str));
         List<Integer> rem = new ArrayList<>();
         double elem;
-        double func;
+        Func func;
         double num1;
         double num2;
         if (capitalCheck(list)) {
             while (list.size() > 1) {
                 if (iterationCheck(list)) {
                     for (int i = 0; i < list.size() - 2; i++) {
-                        if (list.get(i).flag()) {
-                            if (list.get(i).num() < 3) {
-                                if (!list.get(i + 1).flag()) {
-                                    elem = unaryFunction(list.get(i).num(), list.get(i + 1).num());
-                                    list.set(i + 1, new Element(false, elem));
-                                    rem.add(i);
-                                    i++;
-                                }
-                            } else {
-                                if (!list.get(i + 1).flag() && !list.get(i + 2).flag()) {
-                                    func = list.get(i).num();
-                                    num1 = list.get(i + 1).num();
-                                    num2 = list.get(i + 2).num();
-                                    elem = binaryFunction(func, num1, num2);
-                                    list.set(i + 1, new Element(false, elem));
-                                    rem.add(i);
-                                    rem.add(i + 2);
-                                    i += 2;
-                                }
+                        if (list.get(i).getClass() == ElementFunc.class) {
+                            if ((list.get(i).func() == Func.SIN
+                              || list.get(i).func() == Func.COS
+                              || list.get(i).func() == Func.SQRT)
+                              && list.get(i + 1).getClass() == ElementNum.class) {
+                                elem = unaryFunction(list.get(i).func(), list.get(i + 1).num());
+                                list.set(i + 1, new ElementNum(elem));
+                                rem.add(i);
+                                i++;
+                            }
+                            if ((list.get(i).func() == Func.MINUS
+                              || list.get(i).func() == Func.PLUS
+                              || list.get(i).func() == Func.MULT
+                              || list.get(i).func() == Func.DIV
+                              || list.get(i).func() == Func.LOG
+                              || list.get(i).func() == Func.POW)
+                              && list.get(i + 1).getClass() == ElementNum.class
+                              && list.get(i + 2).getClass() == ElementNum.class) {
+                                func = list.get(i).func();
+                                num1 = list.get(i + 1).num();
+                                num2 = list.get(i + 2).num();
+                                elem = binaryFunction(func, num1, num2);
+                                list.set(i + 1, new ElementNum(elem));
+                                rem.add(i);
+                                rem.add(i + 2);
+                                i += 2;
                             }
                         }
                     }
-                    if (list.get(list.size() - 2).flag() && !list.get(list.size() - 1).flag()) {
-                        func = list.get(list.size() - 2).num();
+                    if ((list.get(list.size() - 2).func() == Func.SQRT
+                      || list.get(list.size() - 2).func() == Func.SIN
+                      || list.get(list.size() - 2).func() == Func.COS)
+                      && list.get(list.size() - 1).getClass() == ElementNum.class) {
+                        func = list.get(list.size() - 2).func();
                         num1 = list.get(list.size() - 1).num();
                         elem = unaryFunction(func, num1);
-                        list.set(list.size() - 1, new Element(false, elem));
+                        list.set(list.size() - 1, new ElementNum(elem));
                         rem.add(list.size() - 2);
                     }
                 } else {
@@ -84,16 +95,26 @@ public class Calculator {
 
     private List<Element> parse(String str) {
         List<Element> result = new ArrayList<>();
-        List<String> funcs = new ArrayList<>();
-        funcs.add("sin");
-        funcs.add("cos");
-        funcs.add("sqrt");
-        funcs.add("+");
-        funcs.add("-");
-        funcs.add("/");
-        funcs.add("*");
-        funcs.add("log");
-        funcs.add("pow");
+        List<String> subs = new ArrayList<>();
+        subs.add("sin");
+        subs.add("cos");
+        subs.add("sqrt");
+        subs.add("+");
+        subs.add("-");
+        subs.add("/");
+        subs.add("*");
+        subs.add("log");
+        subs.add("pow");
+        List<Func> funcs = new ArrayList<>();
+        funcs.add(Func.SIN);
+        funcs.add(Func.COS);
+        funcs.add(Func.SQRT);
+        funcs.add(Func.PLUS);
+        funcs.add(Func.MINUS);
+        funcs.add(Func.DIV);
+        funcs.add(Func.MULT);
+        funcs.add(Func.LOG);
+        funcs.add(Func.POW);
         String sub = "";
         double elem;
         int index;
@@ -101,13 +122,13 @@ public class Calculator {
             if (str.charAt(i) != ' ') {
                 sub += str.charAt(i);
             } else if (!sub.equals("")) {
-                index = funcs.indexOf(sub);
+                index = subs.indexOf(sub);
                 if (index != -1) {
-                    result.add(new Element(true, index));
+                    result.add(new ElementFunc(funcs.get(index)));
                 } else {
                     try {
                         elem = Double.parseDouble(sub);
-                        result.add(new Element(false, elem));
+                        result.add(new ElementNum(elem));
                     } catch (NumberFormatException e) {
                         System.out.println("NumberFormatException: " + e.getMessage());
                     }
@@ -115,14 +136,14 @@ public class Calculator {
                 sub = "";
             }
         }
-        if (sub != "") {
-            index = funcs.indexOf(sub);
+        if (!sub.equals("")) {
+            index = subs.indexOf(sub);
             if (index != -1) {
-                result.add(new Element(true, index));
+                result.add(new ElementFunc(funcs.get(index)));
             } else {
                 try {
                     elem = Double.parseDouble(sub);
-                    result.add(new Element(false, elem));
+                    result.add(new ElementNum(elem));
                 } catch (NumberFormatException e) {
                     System.out.println("NumberFormatException: " + e.getMessage());
                 }
@@ -131,22 +152,25 @@ public class Calculator {
         return result;
     }
 
-    private double unaryFunction(double func, double num) {
-        return switch ((int) func) {
-            case 0 -> Math.sin(num);
-            case 1 -> Math.cos(num);
-            default -> Math.sqrt(num);
+    private double unaryFunction(Func func, double num) throws IncorrectInputException {
+        return switch (func) {
+            case SIN -> Math.sin(num);
+            case COS -> Math.cos(num);
+            case SQRT -> Math.sqrt(num);
+            default -> throw new IncorrectInputException("Your input string is incorrect");
         };
     }
 
-    private double binaryFunction(double func, double num1, double num2) {
-        return switch ((int) func) {
-            case 3 -> num1 + num2;
-            case 4 -> num1 - num2;
-            case 5 -> num1 / num2;
-            case 6 -> num1 * num2;
-            case 7 -> Math.log(num2) / Math.log(num1);
-            default -> Math.pow(num1, num2);
+    private double binaryFunction(Func func, double num1, double num2)
+            throws IncorrectInputException {
+        return switch (func) {
+            case PLUS -> num1 + num2;
+            case MINUS -> num1 - num2;
+            case DIV -> num1 / num2;
+            case MULT -> num1 * num2;
+            case LOG -> Math.log(num2) / Math.log(num1);
+            case POW -> Math.pow(num1, num2);
+            default -> throw new IncorrectInputException("Your input string is incorrect");
         };
     }
 
@@ -154,9 +178,14 @@ public class Calculator {
         int cntBin = 0;
         int cntNum = 0;
         for (Element element : list) {
-            if (!element.flag()) {
+            if (element.getClass() == ElementNum.class) {
                 cntNum++;
-            } else if (element.num() >= 3) {
+            } else if (element.func() == Func.LOG
+                    || element.func() == Func.POW
+                    || element.func() == Func.PLUS
+                    || element.func() == Func.MINUS
+                    || element.func() == Func.MULT
+                    || element.func() == Func.DIV) {
                 cntBin++;
             }
         }
@@ -164,6 +193,7 @@ public class Calculator {
     }
 
     private boolean iterationCheck(List<Element> list) {
-        return !list.get(list.size() - 1).flag() && list.get(0).flag();
+        return list.get(list.size() - 1).getClass() == ElementNum.class
+                && list.get(0).getClass() == ElementFunc.class;
     }
 }

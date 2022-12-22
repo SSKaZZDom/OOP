@@ -5,7 +5,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test for Calculator.
- * 9 unit tests & 1 test from the example in tasks.
+ * 9 unit tests
+ * 1 test from the example in tasks
+ * 1 huge test
+ * 1 test for exception.
  */
 public class CalculatorTests {
     @Test
@@ -86,6 +89,14 @@ public class CalculatorTests {
         Calculator calc = new Calculator(str);
         double res = calc.calculator();
         Assertions.assertEquals(0.0, res);
+    }
+
+    @Test
+    public void testHuge() throws IncorrectInputException {
+        String str = "sin - * 1 sqrt log 3.34 10 / 3 + pow 10 1.2 cos 22";
+        Calculator calc = new Calculator(str);
+        double res = calc.calculator();
+        Assertions.assertEquals(0.9245098116897542, res);
     }
 
     @Test
