@@ -151,7 +151,7 @@ loadScripts(document, 'script');</script>
  Steps:
  0) Check for the validity of input string
  1) Parse String, for example from "- 1 1" it does list of elements -
-    List = [Element(true, 4.0), Element(false, 1.0), Element(false, 1.0)]
+    List = [ElementFunc(MINUS), ElementNum(1.0), ElementNum(1.0)]
  2) Find all actions, which we can do, for example in "sin + - 1 1 sin 0"
     on the first iteration we do "- 1 1" and "sin 0"
     on the second iteration we do "+ 1 0"
