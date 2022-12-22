@@ -41,33 +41,31 @@ public class Calculator {
             while (list.size() > 1) {
                 if (iterationCheck(list)) {
                     for (int i = 0; i < list.size() - 2; i++) {
-                        if (list.get(i).getClass() == ElementFunc.class) {
-                            if ((list.get(i).func() == Func.SIN
-                                || list.get(i).func() == Func.COS
-                                || list.get(i).func() == Func.SQRT)
-                                && list.get(i + 1).getClass() == ElementNum.class) {
-                                elem = unaryFunction(list.get(i).func(), list.get(i + 1).num());
-                                list.set(i + 1, new ElementNum(elem));
-                                rem.add(i);
-                                i++;
-                            }
-                            if ((list.get(i).func() == Func.MINUS
-                                || list.get(i).func() == Func.PLUS
-                                || list.get(i).func() == Func.MULT
-                                || list.get(i).func() == Func.DIV
-                                || list.get(i).func() == Func.LOG
-                                || list.get(i).func() == Func.POW)
-                                && list.get(i + 1).getClass() == ElementNum.class
-                                && list.get(i + 2).getClass() == ElementNum.class) {
-                                func = list.get(i).func();
-                                num1 = list.get(i + 1).num();
-                                num2 = list.get(i + 2).num();
-                                elem = binaryFunction(func, num1, num2);
-                                list.set(i + 1, new ElementNum(elem));
-                                rem.add(i);
-                                rem.add(i + 2);
-                                i += 2;
-                            }
+                        func = list.get(i).func();
+                        if ((func == Func.SIN
+                            || func == Func.COS
+                            || func == Func.SQRT)
+                            && list.get(i + 1).getClass() == ElementNum.class) {
+                            elem = unaryFunction(func, list.get(i + 1).num());
+                            list.set(i + 1, new ElementNum(elem));
+                            rem.add(i);
+                            i++;
+                        }
+                        if ((func == Func.MINUS
+                            || func == Func.PLUS
+                            || func == Func.MULT
+                            || func == Func.DIV
+                            || func == Func.LOG
+                            || func == Func.POW)
+                            && list.get(i + 1).getClass() == ElementNum.class
+                            && list.get(i + 2).getClass() == ElementNum.class) {
+                            num1 = list.get(i + 1).num();
+                            num2 = list.get(i + 2).num();
+                            elem = binaryFunction(func, num1, num2);
+                            list.set(i + 1, new ElementNum(elem));
+                            rem.add(i);
+                            rem.add(i + 2);
+                            i += 2;
                         }
                     }
                     if ((list.get(list.size() - 2).func() == Func.SQRT
