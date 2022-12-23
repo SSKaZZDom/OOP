@@ -50,6 +50,7 @@ public class RKAlg {
             int t = -1;
             int h = 1;
             int j;
+
             int i;
 
             for (i = 0; i < patLen - 1; i++) {
