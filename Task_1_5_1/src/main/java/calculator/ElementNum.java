@@ -3,7 +3,7 @@ package calculator;
 /**
  * Double Element.
  */
-public class ElementNum extends Element {
+public class ElementNum implements Element {
     double num;
 
     ElementNum(double num) {
@@ -11,12 +11,12 @@ public class ElementNum extends Element {
     }
 
     @Override
-    ElementFunc.Func func() {
-        return ElementFunc.Func.DEFAULT;
+    public ElementFunc.Func func() {
+        return null;
     }
 
     @Override
-    double num() {
+    public double num() {
         return num;
     }
 }

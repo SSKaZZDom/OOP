@@ -3,8 +3,8 @@ package calculator;
 /**
  * Element of list-result of parsing.
  */
-public abstract class Element {
-    abstract ElementFunc.Func func();
+interface Element {
+    ElementFunc.Func func();
 
-    abstract double num();
+    double num();
 }
