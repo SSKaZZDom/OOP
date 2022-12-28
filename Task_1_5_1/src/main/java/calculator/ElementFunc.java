@@ -3,18 +3,21 @@ package calculator;
 /**
  * Function Element.
  */
-public class ElementFunc extends Element {
+public class ElementFunc implements Element {
     enum Func {
-        LOG,
-        SIN,
-        COS,
-        SQRT,
-        MINUS,
-        PLUS,
-        MULT,
-        DIV,
-        POW,
-        DEFAULT
+        LOG("log"),
+        SIN("sin"),
+        COS("cos"),
+        SQRT("sqrt"),
+        MINUS("-"),
+        PLUS("+"),
+        MULT("*"),
+        DIV("/"),
+        POW("pow");
+        final String str;
+        Func(String str) {
+            this.str = str;
+        }
     }
 
     Func func;
@@ -24,12 +27,12 @@ public class ElementFunc extends Element {
     }
 
     @Override
-    Func func() {
+    public Func func() {
         return func;
     }
 
     @Override
-    double num() {
-        return -234;
+    public double num() {
+        return 0;
     }
 }

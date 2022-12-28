@@ -57,7 +57,7 @@ public class Calculator {
                             || func == Func.DIV
                             || func == Func.LOG
                             || func == Func.POW)
-                            && list.get(i + 1).getClass() == ElementNum.class
+                            && list.get(i + 1) instanceof ElementNum
                             && list.get(i + 2).getClass() == ElementNum.class) {
                             num1 = list.get(i + 1).num();
                             num2 = list.get(i + 2).num();
@@ -68,11 +68,11 @@ public class Calculator {
                             i += 2;
                         }
                     }
-                    if ((list.get(list.size() - 2).func() == Func.SQRT
-                        || list.get(list.size() - 2).func() == Func.SIN
-                        || list.get(list.size() - 2).func() == Func.COS)
+                    func = list.get(list.size() - 2).func();
+                    if ((func == Func.SQRT
+                        || func == Func.SIN
+                        || func == Func.COS)
                         && list.get(list.size() - 1).getClass() == ElementNum.class) {
-                        func = list.get(list.size() - 2).func();
                         num1 = list.get(list.size() - 1).num();
                         elem = unaryFunction(func, num1);
                         list.set(list.size() - 1, new ElementNum(elem));
@@ -94,36 +94,16 @@ public class Calculator {
 
     private List<Element> parse(String str) {
         List<Element> result = new ArrayList<>();
-        List<String> subs = new ArrayList<>();
-        subs.add("sin");
-        subs.add("cos");
-        subs.add("sqrt");
-        subs.add("+");
-        subs.add("-");
-        subs.add("/");
-        subs.add("*");
-        subs.add("log");
-        subs.add("pow");
-        List<Func> funcs = new ArrayList<>();
-        funcs.add(Func.SIN);
-        funcs.add(Func.COS);
-        funcs.add(Func.SQRT);
-        funcs.add(Func.PLUS);
-        funcs.add(Func.MINUS);
-        funcs.add(Func.DIV);
-        funcs.add(Func.MULT);
-        funcs.add(Func.LOG);
-        funcs.add(Func.POW);
         String sub = "";
         double elem;
-        int index;
+        Func func;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) != ' ') {
                 sub += str.charAt(i);
             } else if (!sub.equals("")) {
-                index = subs.indexOf(sub);
-                if (index != -1) {
-                    result.add(new ElementFunc(funcs.get(index)));
+                func = fromStr(sub);
+                if (func != null) {
+                    result.add(new ElementFunc(func));
                 } else {
                     try {
                         elem = Double.parseDouble(sub);
@@ -136,9 +116,9 @@ public class Calculator {
             }
         }
         if (!sub.equals("")) {
-            index = subs.indexOf(sub);
-            if (index != -1) {
-                result.add(new ElementFunc(funcs.get(index)));
+            func = fromStr(sub);
+            if (func != null) {
+                result.add(new ElementFunc(func));
             } else {
                 try {
                     elem = Double.parseDouble(sub);
@@ -194,5 +174,14 @@ public class Calculator {
     private boolean iterationCheck(List<Element> list) {
         return list.get(list.size() - 1).getClass() == ElementNum.class
                 && list.get(0).getClass() == ElementFunc.class;
+    }
+
+    private Func fromStr(String string) {
+        for (Func f : Func.values()) {
+            if (f.str.equalsIgnoreCase(string)) {
+                return f;
+            }
+        }
+        return null;
     }
 }
