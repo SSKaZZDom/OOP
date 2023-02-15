@@ -11,7 +11,25 @@ import java.util.Scanner;
 
 public class PrimeTests {
     @Test
-    public void testNotConcurrency() {
+    public void testNotConcurrencyFalse() {
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums1.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++){
+                test.add(sc.nextInt());
+            }
+            FindPrime fp = new FindPrime(test);
+            Assertions.assertFalse(fp.doNotHavePrime());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void testNotConcurrencyTrue() {
+        long start = System.nanoTime();
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
             assert stream != null;
             Scanner sc = new Scanner(stream);
@@ -25,10 +43,12 @@ public class PrimeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(System.nanoTime() - start);
     }
 
     @Test
     public void testTwoThreads() {
+        long start = System.nanoTime();
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
             assert stream != null;
             Scanner sc = new Scanner(stream);
@@ -42,10 +62,12 @@ public class PrimeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(System.nanoTime() - start);
     }
 
     @Test
     public void testThreeThreads() {
+        long start = System.nanoTime();
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
             assert stream != null;
             Scanner sc = new Scanner(stream);
@@ -59,10 +81,12 @@ public class PrimeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(System.nanoTime() - start);
     }
 
     @Test
     public void testFourThreads() {
+        long start = System.nanoTime();
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
             assert stream != null;
             Scanner sc = new Scanner(stream);
@@ -76,10 +100,88 @@ public class PrimeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testFiveThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++){
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testSixThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++){
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testSevenThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++){
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testEightThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++){
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
     }
 
     @Test
     public void testParallelStream() {
+        long start = System.nanoTime();
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
             assert stream != null;
             Scanner sc = new Scanner(stream);
@@ -92,5 +194,6 @@ public class PrimeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(System.nanoTime() - start);
     }
 }
