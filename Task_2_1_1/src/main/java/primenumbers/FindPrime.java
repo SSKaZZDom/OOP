@@ -20,7 +20,7 @@ public class FindPrime extends Thread {
         return false;
     }
 
-    private boolean isNotPrime(int num) {
+    public static boolean isNotPrime(int num) {
         for (int i = 2; i <= sqrt(num); i++){
             if (num % i == 0) {
                 return true;
