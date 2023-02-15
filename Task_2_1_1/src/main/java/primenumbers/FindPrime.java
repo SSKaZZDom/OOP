@@ -30,6 +30,7 @@ public class FindPrime extends Thread {
 
     /**
      * This function checks "num" is non-prime number.
+     *
      * @param num - the number that is being checked.
      */
     public static boolean isNotPrime(int num) {

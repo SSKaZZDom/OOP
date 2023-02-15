@@ -9,6 +9,7 @@ import java.util.List;
 public class FindWithTreads {
     /**
      * This function return true, if the list has non-prime number, and false otherwise.
+     *
      * @param list - The list we are looking for
      * @param count - Count of threads
      */
