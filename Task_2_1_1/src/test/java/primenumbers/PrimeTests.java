@@ -1,14 +1,20 @@
 package primenumbers;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for my methods.
+ * 2 tests without concurrency
+ * 7 tests with different count of threads
+ * 1 test with parallelStream
+ * Each test has a print of operating time
+ */
 public class PrimeTests {
     @Test
     public void testNotConcurrencyFalse() {
@@ -17,7 +23,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindPrime fp = new FindPrime(test);
@@ -35,7 +41,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindPrime fp = new FindPrime(test);
@@ -54,7 +60,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -73,7 +79,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -92,7 +98,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -111,7 +117,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -130,7 +136,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -149,7 +155,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -168,7 +174,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
@@ -187,7 +193,7 @@ public class PrimeTests {
             Scanner sc = new Scanner(stream);
             int cnt = sc.nextInt();
             List<Integer> test = new ArrayList<>();
-            for (int i = 0; i < cnt; i++){
+            for (int i = 0; i < cnt; i++) {
                 test.add(sc.nextInt());
             }
             Assertions.assertTrue(test.parallelStream().anyMatch(FindPrime::isNotPrime));
