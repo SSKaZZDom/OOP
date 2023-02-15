@@ -3,7 +3,15 @@ package primenumbers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class used for findings non-prime numbers in the list using multiple threads.
+ */
 public class FindWithTreads {
+    /**
+     * This function return true, if the list has non-prime number, and false otherwise.
+     * @param list - The list we are looking for
+     * @param count - Count of threads
+     */
     public boolean threadsFinder(List<Integer> list, int count) {
         int step = list.size() / count;
         int remain = list.size() % count;
