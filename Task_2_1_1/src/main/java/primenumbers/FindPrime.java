@@ -1,7 +1,5 @@
 package primenumbers;
 
-import static java.lang.Math.sqrt;
-
 import java.util.List;
 
 /**
@@ -34,7 +32,7 @@ public class FindPrime extends Thread {
      * @param num - the number that is being checked.
      */
     public static boolean isNotPrime(int num) {
-        for (int i = 2; i <= sqrt(num); i++) {
+        for (int i = 2; i * i <= num; i++) {
             if (num % i == 0) {
                 return true;
             }

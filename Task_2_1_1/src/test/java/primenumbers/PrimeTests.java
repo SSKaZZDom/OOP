@@ -121,7 +121,7 @@ public class PrimeTests {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
-            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+            Assertions.assertTrue(fwt.threadsFinder(test, 5));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -140,7 +140,7 @@ public class PrimeTests {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
-            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+            Assertions.assertTrue(fwt.threadsFinder(test, 6));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -159,7 +159,7 @@ public class PrimeTests {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
-            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+            Assertions.assertTrue(fwt.threadsFinder(test, 7));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -178,7 +178,83 @@ public class PrimeTests {
                 test.add(sc.nextInt());
             }
             FindWithTreads fwt = new FindWithTreads();
-            Assertions.assertTrue(fwt.threadsFinder(test, 4));
+            Assertions.assertTrue(fwt.threadsFinder(test, 8));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testNineThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++) {
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 9));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testTenThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++) {
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 10));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testElevenThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++) {
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 11));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(System.nanoTime() - start);
+    }
+
+    @Test
+    public void testTwelveThreads() {
+        long start = System.nanoTime();
+        try (InputStream stream = getClass().getClassLoader().getResourceAsStream("Nums.txt")) {
+            assert stream != null;
+            Scanner sc = new Scanner(stream);
+            int cnt = sc.nextInt();
+            List<Integer> test = new ArrayList<>();
+            for (int i = 0; i < cnt; i++) {
+                test.add(sc.nextInt());
+            }
+            FindWithTreads fwt = new FindWithTreads();
+            Assertions.assertTrue(fwt.threadsFinder(test, 12));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
