@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Class used for findings non-prime numbers in the list using multiple threads.
  */
-public class FindWithThreads extends InterruptedException{
+public class FindWithThreads extends InterruptedException {
     /**
      * This function return true, if the list has non-prime number, and false otherwise.
      *
@@ -31,7 +31,7 @@ public class FindWithThreads extends InterruptedException{
         return false;
     }
 
-    private List<List<Integer>> subLists (List<Integer> list, int count) {
+    private List<List<Integer>> subLists(List<Integer> list, int count) {
         int step = list.size() / count;
         int remain = list.size() % count;
         int index = 0;
