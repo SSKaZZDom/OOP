@@ -18,12 +18,7 @@ public class FindPrime extends Thread {
      * This function checks if there is a non-prime number in the list.
      */
     public boolean doNotHavePrime() {
-        for (Integer o : nums) {
-            if (isNotPrime(o)) {
-                return true;
-            }
-        }
-        return false;
+        return nums.stream().anyMatch(FindPrime::isNotPrime);
     }
 
     /**
