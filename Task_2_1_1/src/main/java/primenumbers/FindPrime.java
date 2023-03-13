@@ -7,8 +7,8 @@ import java.util.List;
  * Class extends Thread
  */
 public class FindPrime extends Thread {
-    List<Integer> nums;
-    boolean res;
+    private List<Integer> nums;
+    private boolean res;
 
     public FindPrime(List<Integer> nums) {
         this.nums = nums;
