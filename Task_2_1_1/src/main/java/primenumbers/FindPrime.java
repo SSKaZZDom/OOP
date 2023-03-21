@@ -17,7 +17,7 @@ public class FindPrime extends Thread {
     /**
      * This function checks if there is a non-prime number in the list.
      */
-    public boolean doNotHavePrime() {
+    public boolean hasNonPrime() {
         return nums.stream().anyMatch(FindPrime::isNotPrime);
     }
 
@@ -41,6 +41,6 @@ public class FindPrime extends Thread {
 
     @Override
     public void run() {
-        res = doNotHavePrime();
+        res = hasNonPrime();
     }
 }
