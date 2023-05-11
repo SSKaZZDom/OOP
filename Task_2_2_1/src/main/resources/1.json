@@ -1,0 +1,38 @@
+{
+  "cooks" : [
+    {
+      "name" : "Igor",
+      "speed" : 100
+    },
+    {
+      "name" : "Vadim",
+      "speed" : 200
+    },
+    {
+      "name" : "Dasha",
+      "speed" : 50
+    },
+    {
+      "name" : "Amina",
+      "speed" : 70
+    }
+  ],
+  "couriers" : [
+    {
+      "name" : "Lyoha",
+      "speed" : 100
+    },
+    {
+      "name" : "Tyoma",
+      "speed" : 200
+    },
+    {
+      "name" : "Misha",
+      "speed" : 250
+    },
+    {
+      "name" : "Kirill",
+      "speed" : 130
+    }
+  ]
+}
