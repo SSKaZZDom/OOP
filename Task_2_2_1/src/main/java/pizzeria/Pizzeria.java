@@ -23,6 +23,7 @@ public class Pizzeria extends Thread {
      * Constructor of Pizzeria class.
      * Has queue of orders and storage queue.
      * Also has arrays of Cooks and Couriers.
+     *
      * @param r reader that reads info from the Json file.
      * @param storageCapacity capacity of pizzeria storage.
      */
@@ -65,7 +66,7 @@ public class Pizzeria extends Thread {
     }
 
     /**
-     * Method that return pizza from the top of storage queue
+     * Method that return pizza from the top of storage queue.
      */
     public Pizza removePizza() throws InterruptedException {
         synchronized (storage) {

@@ -11,6 +11,7 @@ public class Pizza {
 
     /**
      * Constructor of Pizza class - has information about order.
+     *
      * @param timeToCooking What time abstract Cook needs, if he/she has speed = 1
      * @param range What time abstract Courier needs, if he/she has speed = 1
      * @param orderId id of this order.

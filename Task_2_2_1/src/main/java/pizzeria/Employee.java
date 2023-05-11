@@ -2,7 +2,8 @@ package pizzeria;
 
 /**
  * Abstract class of Employee.
- * Realizations - Cook & Courier.
+ * Realizations - Cook and Courier.
+ *
  * @param <T> - information about this Employee.
  */
 public abstract class Employee<T extends EmployeeInfo> extends Thread {

@@ -1,5 +1,8 @@
 package pizzeria;
 
+/**
+ * Class which has an information of Employee.
+ */
 public class EmployeeInfo {
     private final String name;
     private final int speed;

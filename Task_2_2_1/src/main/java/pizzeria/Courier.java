@@ -13,6 +13,7 @@ public class Courier extends Employee<CourierInfo> {
 
     /**
      * Constructor of Courier class.
+     *
      * @param pizzeria - pizzeria where Courier works.
      * @param info - Courier's name and speed.
      */

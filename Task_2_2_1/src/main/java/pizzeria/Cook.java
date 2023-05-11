@@ -1,4 +1,5 @@
 package pizzeria;
+
 /**
  * Realization of Cook class.
  * Has two methods:
@@ -12,6 +13,7 @@ public class Cook extends Employee<CookInfo> {
 
     /**
      * Constructor of Cook class.
+     *
      * @param pizzeria - pizzeria where cook works.
      * @param info - name and speed of this cook.
      */
