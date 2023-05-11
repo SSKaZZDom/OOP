@@ -6,7 +6,7 @@ public class EmployeeInfo {
 
     /**
      * Constructor of EmployeeInfo.
-     *
+     * Name and speed of this Employee.
      */
     public EmployeeInfo(String name, int speed) {
         this.name = name;

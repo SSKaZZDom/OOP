@@ -8,6 +8,10 @@ import java.util.Queue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
+/**
+ * Pizzeria class.
+ * It starts all cooks and couriers threads and has queues of orders and storage.
+ */
 public class Pizzeria extends Thread {
     private final int storageCapacity;
     private final Cook[] cooks;
@@ -15,6 +19,13 @@ public class Pizzeria extends Thread {
     private final Queue<Pizza> storage = new ArrayDeque<Pizza>();
     private final Queue<Pizza> orders = new ArrayDeque<Pizza>();
 
+    /**
+     * Constructor of Pizzeria class.
+     * Has queue of orders and storage queue.
+     * Also has arrays of Cooks and Couriers.
+     * @param r reader that reads info from the Json file.
+     * @param storageCapacity capacity of pizzeria storage.
+     */
     public Pizzeria(Reader r, int storageCapacity) {
         Gson gson = new Gson();
 
@@ -28,6 +39,9 @@ public class Pizzeria extends Thread {
         this.storageCapacity = storageCapacity;
     }
 
+    /**
+     * Method that return order from the top of order queue.
+     */
     public Pizza getOrder() throws InterruptedException {
         synchronized (orders) {
             if (orders.size() == 0) {
@@ -37,6 +51,9 @@ public class Pizzeria extends Thread {
         }
     }
 
+    /**
+     * Method that add pizza to the storage queue.
+     */
     public void addPizza(Pizza pizza) throws InterruptedException {
         synchronized (storage) {
             while (storage.size() == storageCapacity) {
@@ -47,6 +64,9 @@ public class Pizzeria extends Thread {
         }
     }
 
+    /**
+     * Method that return pizza from the top of storage queue
+     */
     public Pizza removePizza() throws InterruptedException {
         synchronized (storage) {
             if (storage.size() == 0) {
@@ -56,6 +76,10 @@ public class Pizzeria extends Thread {
         }
     }
 
+    /**
+     * Method add order to the queue of orders.
+     * @param pizza - This order
+     */
     public void addOrder(Pizza pizza) throws InterruptedException {
         orders.add(pizza);
         synchronized (orders) {

@@ -1,10 +1,20 @@
 package pizzeria;
-
+/**
+ * Realization of Cook class.
+ * Has two methods:
+ * work - start of workday, cook wait the orders
+ * stopped - end of workday, cook is cooking the last order and finishing work
+ */
 public class Cook extends Employee<CookInfo> {
     private boolean isWorking = true;
     private final Pizzeria pizzeria;
     private final CookInfo info;
 
+    /**
+     * Constructor of Cook class.
+     * @param pizzeria - pizzeria where cook works.
+     * @param info - name and speed of this cook.
+     */
     public Cook(Pizzeria pizzeria, CookInfo info) {
         super(info, pizzeria);
         this.pizzeria = pizzeria;
