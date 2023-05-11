@@ -141,6 +141,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Pizzeria</span>
 extends java.lang.Thread</pre>
+<div class="block">Pizzeria class.
+ It starts all cooks and couriers threads and has queues of orders and storage.</div>
 </li>
 </ul>
 </div>
@@ -197,7 +199,9 @@ extends java.lang.Thread</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.io.Reader,int)">Pizzeria</a></span>&#8203;(java.io.Reader&nbsp;r,
         int&nbsp;storageCapacity)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor of Pizzeria class.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -220,17 +224,23 @@ extends java.lang.Thread</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addOrder(pizzeria.Pizza)">addOrder</a></span>&#8203;(<a href="Pizza.html" title="class in pizzeria">Pizza</a>&nbsp;pizza)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Method add order to the queue of orders.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addPizza(pizzeria.Pizza)">addPizza</a></span>&#8203;(<a href="Pizza.html" title="class in pizzeria">Pizza</a>&nbsp;pizza)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Method that add pizza to the storage queue.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="Pizza.html" title="class in pizzeria">Pizza</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOrder()">getOrder</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Method that return order from the top of order queue.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayDeque&lt;<a href="Pizza.html" title="class in pizzeria">Pizza</a>&gt;</code></td>
@@ -245,7 +255,9 @@ extends java.lang.Thread</pre>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Pizza.html" title="class in pizzeria">Pizza</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removePizza()">removePizza</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Method that return pizza from the top of storage queue.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -291,6 +303,14 @@ extends java.lang.Thread</pre>
 <h4>Pizzeria</h4>
 <pre>public&nbsp;Pizzeria&#8203;(java.io.Reader&nbsp;r,
                 int&nbsp;storageCapacity)</pre>
+<div class="block">Constructor of Pizzeria class.
+ Has queue of orders and storage queue.
+ Also has arrays of Cooks and Couriers.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>r</code> - reader that reads info from the Json file.</dd>
+<dd><code>storageCapacity</code> - capacity of pizzeria storage.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -311,6 +331,7 @@ extends java.lang.Thread</pre>
 <h4>getOrder</h4>
 <pre class="methodSignature">public&nbsp;<a href="Pizza.html" title="class in pizzeria">Pizza</a>&nbsp;getOrder()
                throws java.lang.InterruptedException</pre>
+<div class="block">Method that return order from the top of order queue.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.InterruptedException</code></dd>
@@ -325,6 +346,7 @@ extends java.lang.Thread</pre>
 <h4>addPizza</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addPizza&#8203;(<a href="Pizza.html" title="class in pizzeria">Pizza</a>&nbsp;pizza)
               throws java.lang.InterruptedException</pre>
+<div class="block">Method that add pizza to the storage queue.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.InterruptedException</code></dd>
@@ -339,6 +361,7 @@ extends java.lang.Thread</pre>
 <h4>removePizza</h4>
 <pre class="methodSignature">public&nbsp;<a href="Pizza.html" title="class in pizzeria">Pizza</a>&nbsp;removePizza()
                   throws java.lang.InterruptedException</pre>
+<div class="block">Method that return pizza from the top of storage queue.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.InterruptedException</code></dd>
@@ -353,7 +376,10 @@ extends java.lang.Thread</pre>
 <h4>addOrder</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addOrder&#8203;(<a href="Pizza.html" title="class in pizzeria">Pizza</a>&nbsp;pizza)
               throws java.lang.InterruptedException</pre>
+<div class="block">Method add order to the queue of orders.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>pizza</code> - - This order</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.InterruptedException</code></dd>
 </dl>
