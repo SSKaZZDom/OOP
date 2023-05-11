@@ -1,4 +1,4 @@
-package pizzeria
+package pizzeria;
 
 import org.junit.jupiter.api.Test;
 
