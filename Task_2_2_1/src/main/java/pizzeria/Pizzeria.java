@@ -79,6 +79,7 @@ public class Pizzeria extends Thread {
 
     /**
      * Method add order to the queue of orders.
+     *
      * @param pizza - This order
      */
     public void addOrder(Pizza pizza) throws InterruptedException {
