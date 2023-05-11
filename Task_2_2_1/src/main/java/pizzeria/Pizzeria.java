@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class Pizzeria extends Thread{
+public class Pizzeria extends Thread {
     private final int storageCapacity;
     private final Cook[] cooks;
     private final Courier[] couriers;
@@ -81,8 +81,7 @@ public class Pizzeria extends Thread{
         }
         try {
             closePizzeria();
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println(e);
         }
         System.out.println("Pizzeria is closing");
@@ -103,7 +102,8 @@ public class Pizzeria extends Thread{
     static class CooksAndCouriers {
         CookInfo[] cooks;
         CourierInfo[] couriers;
-        CooksAndCouriers(CookInfo[] cooks, CourierInfo[] couriers){
+
+        CooksAndCouriers(CookInfo[] cooks, CourierInfo[] couriers) {
             this.cooks = cooks;
             this.couriers = couriers;
         }

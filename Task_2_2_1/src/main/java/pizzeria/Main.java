@@ -19,7 +19,8 @@ public class Main {
                     pizzeria.addOrder(pizzas[i]);
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            System.out.println("Main has been failed");
         }
     }
 }

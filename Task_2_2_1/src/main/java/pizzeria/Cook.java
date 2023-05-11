@@ -1,6 +1,6 @@
 package pizzeria;
 
-public class Cook extends Employee<CookInfo>{
+public class Cook extends Employee<CookInfo> {
     private boolean isWorking = true;
     private final Pizzeria pizzeria;
     private final CookInfo info;
@@ -16,10 +16,14 @@ public class Cook extends Employee<CookInfo>{
         while (isWorking) {
             Pizza pizza = pizzeria.getOrder();
             if (pizza != null) {
-                System.out.printf("ORDER %d is being cooked by Cook %s\n", pizza.orderId(), info.name());
+                System.out.printf("ORDER %d is being cooked by Cook %s\n",
+                        pizza.orderId(),
+                        info.name());
                 sleep(Math.round(pizza.timeToCooking() * 1000L / info.speed()));
                 pizzeria.addPizza(pizza);
-                System.out.printf("ORDER %d stored by Cook %s\n", pizza.orderId(), info.name());
+                System.out.printf("ORDER %d stored by Cook %s\n",
+                        pizza.orderId(),
+                        info.name());
             }
         }
     }
