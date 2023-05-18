@@ -24,7 +24,7 @@ public class Courier extends Employee<CourierInfo> {
     }
 
     @Override
-    public void work(){
+    public void work() {
         try {
             while (isWorking) {
                 Pizza pizza = pizzeria.removePizza();

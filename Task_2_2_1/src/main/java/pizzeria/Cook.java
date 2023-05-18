@@ -24,7 +24,7 @@ public class Cook extends Employee<CookInfo> {
     }
 
     @Override
-    public void work(){
+    public void work() {
         try {
             while (isWorking) {
                 Pizza pizza = pizzeria.getOrder();

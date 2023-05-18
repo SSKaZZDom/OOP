@@ -101,7 +101,7 @@ public class Pizzeria extends Thread {
         try {
             closePizzeria();
         } catch (InterruptedException e) {
-            System.out.println(e);
+            System.out.println("Pizzeria cannot close properly");
         }
         System.out.println("Pizzeria is closing");
     }
