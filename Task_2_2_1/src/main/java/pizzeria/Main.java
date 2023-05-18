@@ -16,7 +16,7 @@ public class Main {
             assert is != null;
             try (BufferedReader r = new BufferedReader(new InputStreamReader(is))
             ) {
-                Pizzeria pizzeria = new Pizzeria(r, 4); // 4 5 3
+                Pizzeria pizzeria = new Pizzeria(r, 4);
                 pizzeria.start();
 
                 Pizza[] pizzas = new Pizza[5];

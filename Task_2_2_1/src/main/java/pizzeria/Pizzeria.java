@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import java.io.Reader;
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.Queue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -16,8 +17,8 @@ public class Pizzeria extends Thread {
     private final int storageCapacity;
     private final Cook[] cooks;
     private final Courier[] couriers;
-    private final Queue<Pizza> storage = new ArrayDeque<Pizza>();
-    private final Queue<Pizza> orders = new ArrayDeque<Pizza>();
+    private final Queue<Pizza> storage = new ArrayDeque<>();
+    private final Queue<Pizza> orders = new ArrayDeque<>();
 
     /**
      * Constructor of Pizzeria class.
@@ -83,18 +84,10 @@ public class Pizzeria extends Thread {
      * @param pizza - This order
      */
     public void addOrder(Pizza pizza) throws InterruptedException {
-        orders.add(pizza);
         synchronized (orders) {
+            orders.add(pizza);
             orders.notify();
         }
-    }
-
-    public ArrayDeque<Pizza> getOrders() {
-        return (ArrayDeque<Pizza>) orders;
-    }
-
-    public ArrayDeque<Pizza> getStorage() {
-        return (ArrayDeque<Pizza>) storage;
     }
 
     @Override

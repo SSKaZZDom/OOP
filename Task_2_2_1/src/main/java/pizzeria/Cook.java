@@ -7,7 +7,7 @@ package pizzeria;
  * stopped - end of workday, cook is cooking the last order and finishing work
  */
 public class Cook extends Employee<CookInfo> {
-    private boolean isWorking = true;
+    private volatile boolean isWorking = true;
     private final Pizzeria pizzeria;
     private final CookInfo info;
 
@@ -24,19 +24,23 @@ public class Cook extends Employee<CookInfo> {
     }
 
     @Override
-    public void work() throws InterruptedException {
-        while (isWorking) {
-            Pizza pizza = pizzeria.getOrder();
-            if (pizza != null) {
-                System.out.printf("ORDER %d is being cooked by Cook %s\n",
-                        pizza.orderId(),
-                        info.name());
-                sleep(Math.round(pizza.timeToCooking() * 1000L / info.speed()));
-                pizzeria.addPizza(pizza);
-                System.out.printf("ORDER %d stored by Cook %s\n",
-                        pizza.orderId(),
-                        info.name());
+    public void work(){
+        try {
+            while (isWorking) {
+                Pizza pizza = pizzeria.getOrder();
+                if (pizza != null) {
+                    System.out.printf("ORDER %d is being cooked by Cook %s\n",
+                            pizza.orderId(),
+                            info.name());
+                    sleep(pizza.timeToCooking() * 1000L / info.speed());
+                    pizzeria.addPizza(pizza);
+                    System.out.printf("ORDER %d stored by Cook %s\n",
+                            pizza.orderId(),
+                            info.name());
+                }
             }
+        } catch (InterruptedException e) {
+            System.out.printf("Cook %s finished work prematurely :(\n", info.name());
         }
     }
 
